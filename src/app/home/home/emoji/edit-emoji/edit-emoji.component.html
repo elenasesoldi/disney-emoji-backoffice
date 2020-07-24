@@ -1,0 +1,56 @@
+<form
+	#emojiForm="ngForm"
+	(ngSubmit)="emojiForm.valid && salva()"
+	class="theme-form">
+
+	<div class="form-row">
+		<!-- NOME -->
+		<div class="col-md-3">
+			<label for="email">Nome</label>
+			<input
+				name="nome"
+				#nome="ngModel"
+				[(ngModel)]="emoji.nome"
+				type="text"
+				class="form-control"
+				placeholder="Nome"
+				required>
+		</div>
+		<!-- CATEGORIA -->
+		<div class="col-md-3">
+			<label for="email">Categoria</label>
+			<select
+				name="categoria"
+				#categoria="ngModel"
+				[(ngModel)]="emoji.categoria"
+				type="text"
+				class="form-control"
+				placeholder="Categoria"
+				required>
+				<option
+					*ngFor="let cat of categorie"
+					value="{{cat}}">
+					{{cat}}
+				</option>
+			</select>
+		</div>
+
+		<div class="form-row">
+			<div class="col-md-12">
+				<button
+					class="btn btn-secondary float-right btn-sm mt-2 mr-1"
+					(click)="annulla()">
+					ANNULLA
+				</button>
+				<button
+					type="submit"
+					class="btn btn-primary  float-right btn-sm mt-2">
+					SALVA
+				</button>
+
+			</div>
+		</div>
+
+		<!-- Section ends -->
+	</div>
+</form>
