@@ -13,13 +13,14 @@ export class EditEmojiComponent implements OnInit {
   emoji: Emoji = new Emoji();
 
   categorie = Object.keys(CategoriaEmoji).map(c => CategoriaEmoji[c]);
-  serie = Object.keys(SerieEmoji).map(s => SerieEmoji[s]);
+  serieemoji = Object.keys(SerieEmoji);
 
   constructor(
     private emojiService: EmojiService
   ) { }
 
   ngOnInit() {
+    console.log(this.serieemoji);
   }
 
   caricaEmoji(id: number): void {
@@ -30,6 +31,10 @@ export class EditEmojiComponent implements OnInit {
 
   salva(): void {
     console.log(this.emoji);
+    this.emoji.id = this.emojiService.emojiTotali + 1;
+    this.emoji.ordine = this.emojiService.emojiTotali + 1;
+
+    this.emojiService.aggiungiEmoji(this.emoji);
   }
 
 }

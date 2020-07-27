@@ -32,7 +32,9 @@ export class EmojiService {
   }
 
   memorizzaEmoji(): void {
+    console.log(this.emojiSubject.value);
     const es = classToPlain(this.emojiSubject.value);
+    console.log(es);
     this.storage.set('emoji', es);
   }
 

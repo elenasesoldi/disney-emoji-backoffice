@@ -27,8 +27,6 @@ export class Emoji {
     this.nome = nome;
   }
 
-
-
   get livelloMassimo(): boolean {
     if (this.categoria === CategoriaEmoji.ARGENTO && this.livello === 3) {
       return true;
@@ -48,8 +46,6 @@ export class Emoji {
       default:
         return undefined;
     }
-    if (this.categoria === CategoriaEmoji.ARGENTO) {
-      return 8;
-    }
   }
+
 }
