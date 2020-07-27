@@ -10,14 +10,18 @@ import { Emoji } from '../../../model/emoji.model';
 export class HomeComponent implements OnInit {
 
   emoji: Emoji[];
+  selectedEmoji: Emoji;
 
   constructor(private emojiService: EmojiService) { }
 
   ngOnInit() {
     this.emojiService.emoji.subscribe((data: Emoji[]) => {
       this.emoji = data;
-      console.log(this.emoji);
     });
+  }
+
+  selectEmoji(emoji: Emoji): void {
+    this.selectedEmoji = emoji;
   }
 
 }

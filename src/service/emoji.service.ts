@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Emoji } from '../model/emoji.model';
+import { Emoji, CategoriaEmoji } from '../model/emoji.model';
 import { StorageService, LOCAL_STORAGE } from 'ngx-webstorage-service';
 import { plainToClass, classToPlain } from 'class-transformer';
 
@@ -25,6 +25,7 @@ export class EmojiService {
     if (e) {
       const em = e.map(p => plainToClass(Emoji, p));
       this.emojiSubject.next(em);
+      console.log(this.emojiSubject.value);
     } else {
       this.emojiSubject.next([]);
       this.memorizzaEmoji();
@@ -32,9 +33,7 @@ export class EmojiService {
   }
 
   memorizzaEmoji(): void {
-    console.log(this.emojiSubject.value);
     const es = classToPlain(this.emojiSubject.value);
-    console.log(es);
     this.storage.set('emoji', es);
   }
 
@@ -52,6 +51,10 @@ export class EmojiService {
 
   prendi(id: number): Emoji {
     return this.emojiSubject.value.find(e => e.id === id);
+  }
+
+  prendiEmojyByCat(categoria: CategoriaEmoji): Emoji[] {
+    return this.emojiSubject.value.filter(e => e.categoria === categoria);
   }
 
   get emojiTotali(): number {

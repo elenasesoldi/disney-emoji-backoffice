@@ -1,2 +1,6 @@
-{{emoji | json}}
-<app-edit-emoji></app-edit-emoji>
+<div class="container">
+	<app-emoji-view [emoji]="selectedEmoji"></app-emoji-view>
+	<app-emoji-list
+		[emoji]="emoji"
+		(selected)="selectEmoji($event)"></app-emoji-list>
+</div>

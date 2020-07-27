@@ -1,3 +1,14 @@
+@import 'variables.scss';
+
+@font-face {
+  font-family: roboto;
+  src: url(../src/app/fonts/Roboto/Roboto-Regular.ttf) format('truetype');
+}
+
+* {
+  font-family: 'roboto';
+}
+
 .row {
   width: 100;
   display: flex;
@@ -22,4 +33,33 @@
       width: -webkit-fill-available;
     }
   }
+}
+
+html {
+  background-image: url('images/background.png');
+  background-size: 100% auto;
+}
+
+.btn {
+  color: white;
+  border-radius: 50px;
+  font-size: x-large;
+
+  &.primary {
+    background: linear-gradient($primary, $primarylight);
+  }
+}
+
+.scritta {
+  color: $scritta;
+  text-shadow: 1px 1px 0px white, 1px 2px 0px white, 2px 1px 0px white, -1px -1px 0px white, -1px -2px 0px white,
+    -2px -1px 0px white, 1px -1px 0px white, 1px -2px 0px white, 2px -1px 0px white, -1px 1px 0px white,
+    -1px 2px 0px white, -2px 1px 0px white;
+}
+
+.scritta2 {
+  color: $scritta2;
+  text-shadow: 1px 1px 0px white, 1px 2px 0px white, 2px 1px 0px white, -1px -1px 0px white, -1px -2px 0px white,
+    -2px -1px 0px white, 1px -1px 0px white, 1px -2px 0px white, 2px -1px 0px white, -1px 1px 0px white,
+    -1px 2px 0px white, -2px 1px 0px white;
 }

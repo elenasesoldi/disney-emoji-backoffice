@@ -1,3 +1,14 @@
-<p>
-  emoji-list works!
-</p>
+<div class="list-container">
+	<ul [style.column-count]="emojiArgentoColumns">
+		<li *ngFor="let e of emojiArgento">
+			<div class="img-border argento">
+				<div class="img-container">
+					<img
+						[src]="e?.immagine"
+						(click)="selectEmoji(e)">
+				</div>
+			</div>
+
+		</li>
+	</ul>
+</div>

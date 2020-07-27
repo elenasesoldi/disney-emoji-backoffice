@@ -1,3 +1,49 @@
-<p>
-  emoji-view works!
-</p>
+<ng-template [ngIf]="emoji">
+	<div class="container">
+		<div class="content1">
+			<div>
+				<img [src]="emoji.immagine">
+			</div>
+			<div>
+				<div class="punteggio {{emoji.categoria}} scritta">
+					<span class="scritta">{{emoji.punti}}</span>
+				</div>
+				<div class="count">
+					<div
+						class="count-inner"
+						[style.width]="(emoji.count / emoji.count * 100) + '%'">
+						<span class="scritta">{{emoji.count}}/{{emoji.countMassimo}}</span>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+		<div class="content2">
+			<div class="nome">
+				<span class="scritta2">{{emoji.nome}}</span>
+			</div>
+			<div>
+				<div class="descrizione-container">
+					<div class="descrizione">
+						<span>{{emoji.descrizione}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="livello">
+				<div class="punteggio {{emoji.categoria}} scritta">
+					<span class="scritta">Livello {{emoji.livello}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="actions">
+		<button
+			type="button"
+			class="btn primary"
+			(click)="modifica()">
+			Modifica
+		</button>
+	</div>
+</ng-template>

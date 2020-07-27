@@ -1,0 +1,120 @@
+@import '../../../../../variables.scss';
+
+.container {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  > * {
+    width: 50%;
+  }
+
+  .scritta,
+  .scritta2 {
+    font-size: xx-large;
+    font-weight: bold;
+  }
+
+  .scritta2 {
+    font-size: xxx-large;
+  }
+
+  .content1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80%;
+    margin: 10% 0;
+    > div {
+      width: 100% !important;
+    }
+    div {
+      display: flex;
+      margin: auto;
+      img {
+        width: 250px;
+        margin: auto;
+      }
+
+      .count {
+        width: 210px;
+        height: 40px;
+        border-radius: 50px;
+        border: solid 5px white;
+        background-image: radial-gradient($viola, $violascuro);
+        .count-inner {
+          background-image: linear-gradient($giallo, $gialloarancione);
+          height: 100%;
+          border-radius: 50px;
+          display: flex;
+          margin: 0;
+          span {
+            margin: auto;
+          }
+        }
+      }
+    }
+  }
+
+  .content2 {
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      height: 33.3%;
+    }
+
+    .nome {
+      display: flex;
+      span {
+        margin: auto;
+      }
+    }
+
+    .descrizione-container {
+      height: 100%;
+      width: 100%;
+      display: flex;
+
+      .descrizione {
+        height: 60%;
+        width: 80%;
+        background: #4e84c3;
+
+        border: 3px solid #1c4b6c;
+        border-radius: 30px;
+        margin: 0 auto;
+        padding: 25px;
+        span {
+          color: white;
+          font-size: x-large;
+        }
+      }
+    }
+  }
+}
+
+.punteggio {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  display: flex;
+  span {
+    margin: auto;
+  }
+  &.argento {
+    background-image: linear-gradient(45deg, $argentoscuro, $argento, $argentochiaro, $argento, $argentoscuro);
+    border: 2px solid $argentoscuro;
+  }
+}
+
+.livello {
+  display: flex;
+
+  .punteggio {
+    width: 140px;
+    height: 140px;
+    border-radius: 100px;
+    margin: auto;
+  }
+}

@@ -22,6 +22,7 @@ export class Emoji {
   serie: SerieEmoji;
   immagine: string;
   ordine: number;
+  descrizione: string;
 
   constructor(nome?: string) {
     this.nome = nome;
