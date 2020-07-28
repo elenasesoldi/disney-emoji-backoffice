@@ -23,9 +23,13 @@ export class Emoji {
   immagine: string;
   ordine: number;
   descrizione: string;
+  premiogruppo: boolean;
+  solodiamante: boolean;
 
   constructor(nome?: string) {
     this.nome = nome;
+    this.premiogruppo = false;
+    this.solodiamante = false;
   }
 
   get livelloMassimo(): boolean {
@@ -47,6 +51,10 @@ export class Emoji {
       default:
         return undefined;
     }
+  }
+
+  get isOro(): boolean {
+    return this.categoria === CategoriaEmoji.ORO;
   }
 
 }

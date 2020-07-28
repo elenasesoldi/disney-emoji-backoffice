@@ -1,38 +1,76 @@
 @import '../../../../../variables.scss';
 
 .img-border {
-  width: 148px;
-  height: 148px;
-  border-radius: 35px;
+  width: 74px;
+  height: 74px;
+  border-radius: 30px;
   display: flex;
   &.argento {
     background-image: linear-gradient(45deg, $argentoscuro, $argento, $argentochiaro, $argento, $argentoscuro);
   }
   .img-container {
     margin: auto;
-    width: 140px;
-    height: 140px;
+    width: 70px;
+    height: 70px;
     background: $celeste;
+    &:hover {
+      background: mix($celeste, $celestescuro);
+    }
+
+    &.selezionato {
+      background: $celestescuro;
+      width: 67px;
+      height: 67px;
+    }
     display: flex;
     border-radius: 30px;
 
     img {
-      width: 90px;
+      width: 50%;
       margin: auto;
+
+      &.selezionata {
+        width: 70%;
+      }
     }
   }
 }
 
 ul {
   list-style: none;
-  padding-top: 20px;
+  padding-top: 10px;
   width: fit-content;
   text-align: justify;
   background: rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
   li {
     width: min-content;
     display: flex;
-    margin: 0 20px 20px 20px;
+    margin: 0 10px 10px 10px;
     display: inline-block;
+  }
+}
+
+.premio {
+  position: absolute;
+  border-radius: 50px;
+  padding: 2px;
+}
+
+.argento {
+  .premio {
+    background-image: linear-gradient(45deg, $argentoscuro, $argento, $argentochiaro, $argento, $argentoscuro);
+  }
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  .button-container {
+    height: 20%;
+  }
+
+  .list-container {
+    height: 80%;
   }
 }

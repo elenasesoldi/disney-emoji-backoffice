@@ -1,3 +1,34 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$disney-emoji-backoffice-primary: mat-palette($mat-indigo);
+$disney-emoji-backoffice-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$disney-emoji-backoffice-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$disney-emoji-backoffice-theme: mat-light-theme(
+  $disney-emoji-backoffice-primary,
+  $disney-emoji-backoffice-accent,
+  $disney-emoji-backoffice-warn
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($disney-emoji-backoffice-theme);
+
 @import 'variables.scss';
 
 @font-face {
@@ -7,6 +38,8 @@
 
 * {
   font-family: 'roboto';
+  margin: 0;
+  padding: 0;
 }
 
 .row {
@@ -16,14 +49,17 @@
 
   .col-3 {
     width: 25%;
+    padding: 20px;
   }
 
   .col-4 {
     width: 33%;
+    padding: 20px;
   }
 
   .col-8 {
     width: 66%;
+    padding: 20px;
   }
 
   .col-12 {
@@ -40,8 +76,7 @@
   }
 }
 
-html,
-.modal-content {
+html {
   background-image: url('images/background.png');
   background-size: 100% auto;
 }
@@ -50,9 +85,23 @@ html,
   color: white;
   border-radius: 50px;
   font-size: x-large;
+  padding: 9px 17px;
+  &:focus {
+    outline: none !important;
+  }
 
   &.primary {
     background: linear-gradient($primary, $primarylight);
+    &:hover {
+      background: linear-gradient(darken($primary, 10%), darken($primarylight, 10%));
+    }
+  }
+
+  &.secondary {
+    background: linear-gradient($secondary, $secondarylight);
+    &:hover {
+      background: linear-gradient(darken($secondary, 10%), darken($secondarylight, 10%));
+    }
   }
 }
 
@@ -68,4 +117,69 @@ html,
   text-shadow: 1px 1px 0px white, 1px 2px 0px white, 2px 1px 0px white, -1px -1px 0px white, -1px -2px 0px white,
     -2px -1px 0px white, 1px -1px 0px white, 1px -2px 0px white, 2px -1px 0px white, -1px 1px 0px white,
     -1px 2px 0px white, -2px 1px 0px white;
+}
+
+.modal-content {
+  background-image: linear-gradient(#93d6f7, #6ac8ff);
+  border: 3px solid #fefffb;
+  border-radius: 50px;
+  width: 80%;
+  height: 80%;
+  position: fixed;
+  padding: 25px;
+  left: 10%;
+  top: 10%;
+
+  .modal-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 10%;
+    .modal-title {
+      text-align: center;
+    }
+  }
+
+  .modal-body {
+    height: 90%;
+  }
+
+  input,
+  textarea,
+  select {
+    border-radius: 30px;
+    height: 30px;
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+}
+
+fa-icon {
+  &.white {
+    svg {
+      color: white;
+    }
+  }
+
+  &.lightblue {
+    svg {
+      color: $primarylight;
+    }
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
 }

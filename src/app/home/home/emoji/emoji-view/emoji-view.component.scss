@@ -2,7 +2,7 @@
 
 .container {
   width: 100%;
-  height: 90%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   > * {
@@ -23,16 +23,19 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 80%;
-    margin: 10% 0;
-    > div {
-      width: 100% !important;
-    }
+    width: 50%;
+    height: 100%;
+
     div {
       display: flex;
-      margin: auto;
+      justify-content: space-around;
+      margin: auto 0;
+
+      &.count {
+        justify-content: start;
+      }
       img {
-        width: 250px;
+        height: 75%;
         margin: auto;
       }
 
@@ -52,6 +55,22 @@
             margin: auto;
           }
         }
+      }
+    }
+
+    .content1-1 {
+      height: 70%;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .content1-2 {
+      display: flex;
+      height: 30%;
+      flex-direction: column;
+
+      > div {
+        height: 50%;
       }
     }
   }
@@ -77,17 +96,18 @@
       display: flex;
 
       .descrizione {
-        height: 60%;
+        height: 70%;
         width: 80%;
         background: #4e84c3;
-
+        display: flex;
         border: 3px solid #1c4b6c;
         border-radius: 30px;
         margin: 0 auto;
-        padding: 25px;
+        padding: 10px;
         span {
           color: white;
-          font-size: x-large;
+          font-size: large;
+          margin: auto;
         }
       }
     }
@@ -112,9 +132,29 @@
   display: flex;
 
   .punteggio {
-    width: 140px;
-    height: 140px;
     border-radius: 100px;
     margin: auto;
+    padding: 10px;
+  }
+}
+
+.btn {
+  margin: 0 30px;
+  height: min-content;
+}
+
+.premio {
+  position: absolute;
+  border-radius: 50px;
+  padding: 7px;
+  display: flex;
+  * {
+    margin: auto;
+  }
+}
+
+.argento {
+  .premio {
+    background-image: linear-gradient(45deg, $argentoscuro, $argento, $argentochiaro, $argento, $argentoscuro);
   }
 }

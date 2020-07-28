@@ -1,12 +1,17 @@
 <div class="modal-header">
-	<h4 class="modal-title">{{titolo}}</h4>
-	<button
-		type="button"
-		class="close"
-		aria-label="Close"
+	<div style="width: -webkit-fill-available;">
+		<h1 class="modal-title scritta2">{{titolo}}</h1>
+	</div>
+
+	<a
+		class="scritta"
 		(click)="annulla()">
-		<span aria-hidden="true">×</span>
-	</button>
+		<h2
+			aria-hidden="true"
+			style="margin-right:25px">
+			×
+		</h2>
+	</a>
 </div>
 
 <div class="modal-body">
@@ -19,7 +24,7 @@
 		<div class="form-row row">
 			<!-- NOME -->
 			<div class="col-4">
-				<label>Nome</label>
+				<label class="scritta">Nome</label>
 				<input
 					name="nome"
 					#nome="ngModel"
@@ -31,7 +36,7 @@
 			</div>
 			<!-- CATEGORIA -->
 			<div class="col-4">
-				<label>Categoria</label>
+				<label class="scritta">Categoria</label>
 				<select
 					name="categoria"
 					#categoria="ngModel"
@@ -49,8 +54,9 @@
 			</div>
 			<!-- SERIE -->
 			<div class="col-4">
-				<label>Serie</label>
+				<label class="scritta">Serie</label>
 				<select
+					[disabled]="!emoji.isOro"
 					name="serie"
 					#serie="ngModel"
 					[(ngModel)]="emoji.serie"
@@ -70,7 +76,7 @@
 		<div class="form-row row">
 			<!-- LIVELLO -->
 			<div class="col-4">
-				<label>Livello</label>
+				<label class="scritta">Livello</label>
 				<input
 					name="livello"
 					#livello="ngModel"
@@ -84,7 +90,7 @@
 			</div>
 			<!-- COUNT -->
 			<div class="col-4">
-				<label>Count</label>
+				<label class="scritta">Count</label>
 				<input
 					name="count"
 					#count="ngModel"
@@ -96,7 +102,7 @@
 			</div>
 			<!-- PUNTI -->
 			<div class="col-4">
-				<label>Punti</label>
+				<label class="scritta">Punti</label>
 				<input
 					name="punti"
 					#punti="ngModel"
@@ -111,7 +117,7 @@
 		<div class="row form-row">
 			<!-- IMMAGINE -->
 			<div class="col-4">
-				<label>Immagine</label>
+				<label class="scritta">Immagine</label>
 				<input
 					name="immagine"
 					#immagine="ngModel"
@@ -122,7 +128,7 @@
 					required>
 			</div>
 			<div class="col-8">
-				<label>Descrizione</label>
+				<label class="scritta">Descrizione</label>
 				<textarea
 					name="descrizione"
 					#descrizione="ngModel"
@@ -133,16 +139,39 @@
 			</div>
 		</div>
 
+		<div class="row form-row">
+			<!-- PREMIO GRUPPO -->
+			<div class="col-3">
+				<input
+					name="premiogruppo"
+					#premiogruppo="ngModel"
+					[(ngModel)]="emoji.premiogruppo"
+					type="checkbox">
+				<label class="scritta">Premio di un gruppo</label>
+			</div>
+			<!-- SOLO DIAMANTE -->
+			<div class="col-3">
+				<input
+					name="solodiamante"
+					#solodiamante="ngModel"
+					[(ngModel)]="emoji.solodiamante"
+					type="checkbox">
+				<label class="scritta">
+					Sbloccabile solo con scatola di diamante
+				</label>
+			</div>
+		</div>
+
 		<div class="form-row row">
 			<div class="col-12">
 				<button
-					class="btn btn-secondary float-right btn-sm mt-2 mr-1"
+					class="btn secondary"
 					(click)="annulla()">
 					ANNULLA
 				</button>
 				<button
 					type="submit"
-					class="btn btn-primary  float-right btn-sm mt-2">
+					class="btn primary">
 					SALVA
 				</button>
 

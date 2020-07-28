@@ -5,8 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmojiViewComponent } from './home/emoji/emoji-view/emoji-view.component';
 import { EmojiListComponent } from './home/emoji/emoji-list/emoji-list.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { EmojiListComponent } from './home/emoji/emoji-list/emoji-list.component
     CommonModule,
     FormsModule,
     HomeRoutingModule,
-    NgbModalModule
+    NgbModalModule,
+    FontAwesomeModule,
+    ScrollingModule
   ]
 })
 export class HomeModule { }

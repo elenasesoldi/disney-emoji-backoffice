@@ -1,14 +1,51 @@
-<div class="list-container">
-	<ul [style.column-count]="emojiArgentoColumns">
-		<li *ngFor="let e of emojiArgento">
-			<div class="img-border argento">
-				<div class="img-container">
-					<img
-						[src]="e?.immagine"
-						(click)="selectEmoji(e)">
-				</div>
-			</div>
+<div class="main">
+	<div class="button-container">
+		<button
+			type="button"
+			class="btn primary"
+			(click)="aggiungi()">
+			Aggiungi Emoji
+		</button>
+	</div>
 
-		</li>
-	</ul>
+	<div
+		class="list-container"
+		*ngIf="emoji.length">
+		<ul
+			[style.column-count]="emojiArgentoColumns"
+			class="scrollingwrapper">
+
+			<li *ngFor="let e of emojiArgento">
+				<div
+					class="img-border argento"
+					[class.selezionato]="e.id == selezionata?.id">
+					<div
+						class="img-container"
+						[class.selezionato]="e.id == selezionata?.id">
+						<div
+							class="premio"
+							*ngIf="e.premiogruppo">
+							<fa-icon
+								[icon]="smile"
+								class="white"></fa-icon>
+
+						</div>
+						<div
+							class="premio"
+							*ngIf="e.solodiamante">
+
+							<fa-icon
+								[icon]="diamond"
+								class="white"></fa-icon>
+						</div>
+						<img
+							[src]="e?.immagine"
+							[class.selezionata]="e.id == selezionata?.id"
+							(click)="selectEmoji(e)">
+					</div>
+				</div>
+
+			</li>
+		</ul>
+	</div>
 </div>

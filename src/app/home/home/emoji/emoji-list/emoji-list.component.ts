@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Emoji, CategoriaEmoji } from '../../../../../model/emoji.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EditEmojiComponent } from '../edit-emoji/edit-emoji.component';
+import { ICONS } from 'src/app/icons/icons';
+import { IconName } from '@fortawesome/free-solid-svg-icons';
+import { EmojiViewComponent } from '../emoji-view/emoji-view.component';
 
 
 @Component({
@@ -14,6 +19,10 @@ export class EmojiListComponent implements OnInit {
 
   @Output()
   selected = new EventEmitter();
+  selezionata: Emoji;
+
+  smile = ICONS.smile;
+  diamond = ICONS.diamond;
 
 
   get emojiArgento(): Emoji[] {
@@ -27,13 +36,21 @@ export class EmojiListComponent implements OnInit {
     return (floor === notfloor) ? floor : floor + 1;
   }
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
+
+    console.log(this.emojiArgentoColumns);
   }
 
   selectEmoji(emoji: Emoji): void {
-    this.selected.emit(emoji);
+    const modal = this.modalService.open(EmojiViewComponent, { centered: true, size: 'lg' });
+    modal.componentInstance.emoji = emoji;
+    this.selezionata = emoji;
+  }
+  aggiungi(): void {
+    const modal = this.modalService.open(EditEmojiComponent, { centered: true, size: 'lg' });
+
   }
 
 }

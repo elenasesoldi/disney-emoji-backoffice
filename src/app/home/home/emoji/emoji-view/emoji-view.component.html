@@ -1,55 +1,97 @@
 <ng-template [ngIf]="emoji">
-	<div class="container">
-		<div class="content1">
-			<div>
-				<img [src]="emoji.immagine">
-			</div>
-			<div>
-				<div class="punteggio {{emoji.categoria}} scritta">
-					<span class="scritta">{{emoji.punti}}</span>
-				</div>
-				<div class="count">
-					<div
-						class="count-inner"
-						[style.width]="(emoji.count / emoji.count * 100) + '%'">
-						<span class="scritta">{{emoji.count}}/{{emoji.countMassimo}}</span>
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-		<div class="content2">
-			<div class="nome">
-				<span class="scritta2">{{emoji.nome}}</span>
-			</div>
-			<div>
-				<div class="descrizione-container">
-					<div class="descrizione">
-						<span>{{emoji.descrizione}}</span>
-					</div>
-				</div>
-			</div>
-			<div class="livello">
-				<div class="punteggio {{emoji.categoria}} scritta">
-					<span class="scritta">Livello {{emoji.livello}}</span>
-				</div>
-			</div>
-		</div>
+	<div class="modal-header">
+		<div></div>
+		<a
+			class="scritta"
+			(click)="annulla()">
+			<h2
+				aria-hidden="true"
+				style="margin-right:25px">
+				×
+			</h2>
+		</a>
 	</div>
-	<div class="actions">
-		<button
-			type="button"
-			class="btn primary"
-			(click)="elimina()">
-			Elimina
-		</button>
-		<button
-			type="button"
-			class="btn primary"
-			(click)="modifica()">
-			Modifica
-		</button>
+
+	<div class="modal-body">
+
+		<div class="container">
+			<div class="content1">
+				<div class="content1-1 {{emoji.categoria}}">
+					<div
+						class="premio"
+						*ngIf="emoji.premiogruppo">
+						<fa-icon
+							[icon]="smile"
+							class="white"
+							size="3x"></fa-icon>
+
+					</div>
+					<div
+						class="premio"
+						*ngIf="emoji .solodiamante">
+
+						<fa-icon
+							[icon]="diamond"
+							size="3x"
+							class="white"></fa-icon>
+					</div>
+					<img [src]="emoji.immagine">
+				</div>
+				<div class="content1-2">
+					<div>
+						<div class="punteggio {{emoji.categoria}} scritta">
+							<span
+								class="scritta"
+								style="font-size: x-large; text-align: center;">
+								Punti {{emoji.punti}}
+							</span>
+						</div>
+						<div class="count">
+							<div
+								class="count-inner"
+								[style.width]="(emoji.count / emoji.countMassimo * 100) + '%'">
+								<span class="scritta">{{emoji.count}}/{{emoji.countMassimo}}</span>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="actions">
+
+						<button
+							type="button"
+							class="btn primary"
+							(click)="modifica()">
+							Modifica
+						</button>
+					</div>
+
+				</div>
+
+			</div>
+			<div class="content2">
+				<div class="nome">
+					<span class="scritta2">{{emoji.nome}}</span>
+				</div>
+				<div>
+					<div class="descrizione-container">
+						<div class="descrizione">
+							<span>{{emoji.descrizione}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="livello">
+					<div class="punteggio {{emoji.categoria}} scritta">
+						<span
+							class="scritta"
+							style="font-size: x-large; text-align: center;">
+							Livello {{emoji.livello}}
+						</span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
 	</div>
 </ng-template>
