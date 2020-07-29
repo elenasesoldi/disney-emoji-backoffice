@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Gruppo } from 'src/model/gruppo.model';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { plainToClass, classToPlain } from 'class-transformer';
+import { EmojiGruppo } from '../model/gruppo.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +13,14 @@ export class EmojiService {
   private gruppoSubject = new BehaviorSubject<Gruppo[]>(undefined);
   public gruppo = this.gruppoSubject.asObservable();
 
+  private emojiSubject = new BehaviorSubject<EmojiGruppo[]>(undefined);
+  public emoji = this.emojiSubject.asObservable();
+
   constructor(
     @Inject(LOCAL_STORAGE) private storage: StorageService
   ) {
     this.caricaGruppi();
+    this.caricaEmoji();
   }
 
   caricaGruppi(): void {
@@ -30,9 +35,26 @@ export class EmojiService {
     }
   }
 
+  caricaEmoji(): void {
+    const g = this.storage.get('emojigruppi');
+    if (g) {
+      const gr = g.map(r => plainToClass(EmojiGruppo, r));
+      this.emojiSubject.next(g);
+      console.log(this.emojiSubject.value);
+    } else {
+      this.emojiSubject.next([]);
+      this.memorizzaEmoji();
+    }
+  }
+
   memorizzaGruppi(): void {
     const gs = classToPlain(this.gruppoSubject.value);
     this.storage.set('gruppi', gs);
+  }
+
+  memorizzaEmoji(): void {
+    const gs = classToPlain(this.emojiSubject.value);
+    this.storage.set('emojigruppi', gs);
   }
 
   aggiungiGruppo(gruppo: Gruppo): void {
@@ -49,6 +71,25 @@ export class EmojiService {
 
   prendi(id: number): Gruppo {
     return this.gruppoSubject.value.find(g => g.id === id);
+  }
+
+  aggiungiEmojiGruppo(gruppoid: number, emojiid: number): void {
+    const eg = new EmojiGruppo();
+    eg.id = this.emojiTotali + 1;
+    eg.gruppoid = gruppoid;
+    eg.emojiid = emojiid;
+
+    this.emojiSubject.value.push(eg);
+    this.memorizzaEmoji();
+
+  }
+
+  prendiEmoji(gruppoid: number): EmojiGruppo[] {
+    return this.emojiSubject.value.filter(el => el.gruppoid === gruppoid);
+  }
+
+  get emojiTotali(): number {
+    return this.emojiSubject.value.length;
   }
 
 
