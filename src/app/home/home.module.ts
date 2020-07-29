@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmojiViewComponent } from './home/emoji/emoji-view/emoji-view.component';
 import { EmojiListComponent } from './home/emoji/emoji-list/emoji-list.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { HeaderComponent } from '../header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     EmojiListComponent,
     EmojiViewComponent,
     HomeComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
