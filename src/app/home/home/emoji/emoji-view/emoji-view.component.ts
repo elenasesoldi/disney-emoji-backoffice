@@ -17,6 +17,7 @@ export class EmojiViewComponent implements OnInit {
 
   smile = ICONS.smile;
   diamond = ICONS.diamond;
+  lock = ICONS.lock;
 
   constructor(private modalService: NgbModal, private activeModal: NgbActiveModal) { }
 
@@ -33,7 +34,7 @@ export class EmojiViewComponent implements OnInit {
   }
 
   annulla(): void {
-    this.activeModal.dismiss();
+    this.modalService.dismissAll();
   }
 
 }

@@ -25,6 +25,7 @@ export class Emoji {
   descrizione: string;
   premiogruppo: boolean;
   solodiamante: boolean;
+  comeottenerla: string;
 
   constructor(nome?: string) {
     this.nome = nome;
@@ -51,6 +52,10 @@ export class Emoji {
       default:
         return undefined;
     }
+  }
+
+  get isArgento(): boolean {
+    return this.categoria === CategoriaEmoji.ARGENTO;
   }
 
   get isOro(): boolean {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Emoji, CategoriaEmoji } from '../../../../../model/emoji.model';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditEmojiComponent } from '../edit-emoji/edit-emoji.component';
 import { ICONS } from 'src/app/icons/icons';
 import { IconName } from '@fortawesome/free-solid-svg-icons';
@@ -23,27 +23,41 @@ export class EmojiListComponent implements OnInit {
 
   smile = ICONS.smile;
   diamond = ICONS.diamond;
+  lock = ICONS.lock;
 
 
   get emojiArgento(): Emoji[] {
-    return this.emoji.filter(e => e.categoria === CategoriaEmoji.ARGENTO);
+    return this.emoji.filter(e => e.isArgento);
+  }
+
+  get emojiOro(): Emoji[] {
+    return this.emoji.filter(e => e.isOro);
   }
 
   get emojiArgentoColumns(): number {
-    const floor = Math.floor(this.emoji.length / 3);
-    const notfloor = this.emoji.length / 3;
+    const floor = Math.floor(this.emojiArgento.length / 3);
+    const notfloor = this.emojiArgento.length / 3;
 
     return (floor === notfloor) ? floor : floor + 1;
   }
+
+  get emojiOroColumns(): number {
+    const floor = Math.floor(this.emojiOro.length / 3);
+    const notfloor = this.emojiOro.length / 3;
+
+    return (floor === notfloor) ? floor : floor + 1;
+  }
+
 
   constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
 
-    console.log(this.emojiArgentoColumns);
+    console.log(this.emojiOroColumns);
   }
 
   selectEmoji(emoji: Emoji): void {
+    console.log(emoji);
     const modal = this.modalService.open(EmojiViewComponent, { centered: true, size: 'lg' });
     modal.componentInstance.emoji = emoji;
     this.selezionata = emoji;

@@ -129,6 +129,7 @@ html {
   padding: 25px;
   left: 10%;
   top: 10%;
+  z-index: 1000;
 
   .modal-header {
     display: flex;
@@ -166,6 +167,24 @@ fa-icon {
   &.lightblue {
     svg {
       color: $primarylight;
+    }
+  }
+
+  &.oroscuro {
+    svg {
+      color: $oroscuro;
+    }
+  }
+
+  &.oro {
+    svg {
+      color: $oro;
+    }
+  }
+
+  &.orochiaro {
+    svg {
+      color: $orochiaro;
     }
   }
 }

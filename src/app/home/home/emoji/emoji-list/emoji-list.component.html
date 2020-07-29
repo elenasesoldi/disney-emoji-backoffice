@@ -12,7 +12,7 @@
 		class="list-container"
 		*ngIf="emoji.length">
 		<ul
-			[style.column-count]="emojiArgentoColumns"
+			[style.column-count]="12"
 			class="scrollingwrapper">
 
 			<li *ngFor="let e of emojiArgento">
@@ -46,6 +46,64 @@
 				</div>
 
 			</li>
+
+		</ul>
+
+		<ul
+			[style.column-count]="12"
+			class="scrollingwrapper">
+
+			<li *ngFor="let e of emojiOro">
+				<div
+					class="img-border oro"
+					[class.selezionato]="e.id == selezionata?.id">
+					<div
+						class="img-container"
+						[class.selezionato]="e.id == selezionata?.id">
+						<div
+							class="premio"
+							*ngIf="e.premiogruppo">
+							<fa-icon
+								[icon]="smile"
+								class="white"></fa-icon>
+
+						</div>
+						<div
+							class="premio"
+							*ngIf="e.solodiamante">
+
+							<fa-icon
+								[icon]="diamond"
+								class="white"></fa-icon>
+						</div>
+						<div
+							class="premio serie"
+							*ngIf="e.serie">
+							<div>{{e.serie}}</div>
+
+						</div>
+						<img
+							[src]="e?.immagine"
+							[class.selezionata]="e.id == selezionata?.id"
+							(click)="selectEmoji(e)">
+						<div
+							class="cover-image"
+							[class.display]="!e.count"
+							(click)="selectEmoji(e)"></div>
+						<div
+							class="lock"
+							*ngIf="!e.count">
+
+							<fa-icon
+								[icon]="lock"
+								class="oroscuro"></fa-icon>
+						</div>
+
+					</div>
+				</div>
+
+			</li>
+
 		</ul>
 	</div>
 </div>

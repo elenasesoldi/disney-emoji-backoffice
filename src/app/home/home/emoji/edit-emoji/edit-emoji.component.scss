@@ -1,3 +1,32 @@
 .btn {
   margin: 0 30px;
 }
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  > div {
+    width: 25% !important;
+    input,
+    select,
+    textarea {
+      width: 90%;
+
+      &[type*='checkbox'] {
+        width: auto;
+      }
+    }
+  }
+}
+
+.disney-form {
+  height: 90% !important;
+  .modal-body {
+    height: 88.88% !important;
+    .modal-footer {
+      height: 11.11% !important;
+    }
+  }
+}

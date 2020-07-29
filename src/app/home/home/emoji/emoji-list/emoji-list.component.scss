@@ -8,11 +8,15 @@
   &.argento {
     background-image: linear-gradient(45deg, $argentoscuro, $argento, $argentochiaro, $argento, $argentoscuro);
   }
+  &.oro {
+    background-image: linear-gradient(45deg, $oroscuro, $oro, $orochiaro, $oro, $oroscuro);
+  }
   .img-container {
     margin: auto;
     width: 70px;
     height: 70px;
     background: $celeste;
+    position: relative;
     &:hover {
       background: mix($celeste, $celestescuro);
     }
@@ -32,6 +36,24 @@
       &.selezionata {
         width: 70%;
       }
+    }
+
+    .cover-image {
+      position: absolute;
+      z-index: 100;
+      background: rgba(7, 87, 190, 0.5);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      display: none;
+
+      &.display {
+        display: block;
+      }
+    }
+
+    .lock {
+      z-index: 150;
     }
   }
 }
@@ -55,6 +77,19 @@ ul {
   position: absolute;
   border-radius: 50px;
   padding: 2px;
+  z-index: 150;
+
+  &.serie {
+    border-radius: 4px;
+    border: 2px solid $oroscuro;
+    padding: 2px 6px;
+    div {
+      color: white;
+      text-shadow: 1px 1px 0px $oroscuro, 1px 2px 0px $oroscuro, 2px 1px 0px $oroscuro, -1px -1px 0px $oroscuro,
+        -1px -2px 0px $oroscuro, -2px -1px 0px $oroscuro, 1px -1px 0px $oroscuro, 1px -2px 0px $oroscuro,
+        2px -1px 0px $oroscuro, -1px 1px 0px $oroscuro, -1px 2px 0px $oroscuro, -2px 1px 0px $oroscuro;
+    }
+  }
 }
 
 .argento {
@@ -63,14 +98,14 @@ ul {
   }
 }
 
-.main {
-  width: 100%;
-  height: 100%;
-  .button-container {
-    height: 20%;
+.oro {
+  .premio {
+    background-image: linear-gradient(45deg, $oroscuro, $oro, $orochiaro, $oro, $oroscuro);
   }
+}
 
-  .list-container {
-    height: 80%;
-  }
+.lock {
+  position: absolute;
+  left: 60px;
+  top: 50px;
 }

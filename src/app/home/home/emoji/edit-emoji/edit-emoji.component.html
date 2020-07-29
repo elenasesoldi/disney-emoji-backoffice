@@ -14,168 +14,175 @@
 	</a>
 </div>
 
-<div class="modal-body">
+<form
+	#emojiForm="ngForm"
+	(ngSubmit)="emojiForm.valid && salva()"
+	class="disney-form">
 
-	<form
-		#emojiForm="ngForm"
-		(ngSubmit)="emojiForm.valid && salva()"
-		class="disney-form">
+	<div class="modal-body">
 
-		<div class="form-row row">
-			<!-- NOME -->
-			<div class="col-4">
-				<label class="scritta">Nome</label>
-				<input
-					name="nome"
-					#nome="ngModel"
-					[(ngModel)]="emoji.nome"
-					type="text"
-					class="form-control"
-					placeholder="Nome"
-					required>
-			</div>
-			<!-- CATEGORIA -->
-			<div class="col-4">
-				<label class="scritta">Categoria</label>
-				<select
-					name="categoria"
-					#categoria="ngModel"
-					[(ngModel)]="emoji.categoria"
-					type="text"
-					class="form-control"
-					placeholder="Categoria"
-					required>
-					<option
-						*ngFor="let cat of categorie"
-						value="{{cat}}">
-						{{cat}}
-					</option>
-				</select>
-			</div>
-			<!-- SERIE -->
-			<div class="col-4">
-				<label class="scritta">Serie</label>
-				<select
-					[disabled]="!emoji.isOro"
-					name="serie"
-					#serie="ngModel"
-					[(ngModel)]="emoji.serie"
-					type="text"
-					class="form-control"
-					placeholder="Serie">
-					<option
-						*ngFor="let ser of serieemoji"
-						value="{{ser}}">
-						{{ser}}
-					</option>
-				</select>
-			</div>
-
+		<!-- NOME -->
+		<div>
+			<label class="scritta">Nome</label>
+			<input
+				name="nome"
+				#nome="ngModel"
+				[(ngModel)]="emoji.nome"
+				type="text"
+				class="form-control"
+				placeholder="Nome"
+				required>
+		</div>
+		<!-- CATEGORIA -->
+		<div>
+			<label class="scritta">Categoria</label>
+			<select
+				name="categoria"
+				#categoria="ngModel"
+				[(ngModel)]="emoji.categoria"
+				type="text"
+				class="form-control"
+				placeholder="Categoria"
+				required>
+				<option
+					*ngFor="let cat of categorie"
+					value="{{cat}}">
+					{{cat}}
+				</option>
+			</select>
+		</div>
+		<!-- SERIE -->
+		<div class="col-4">
+			<label class="scritta">Serie</label>
+			<select
+				[disabled]="!emoji.isOro"
+				name="serie"
+				#serie="ngModel"
+				[(ngModel)]="emoji.serie"
+				type="text"
+				class="form-control"
+				placeholder="Serie">
+				<option
+					*ngFor="let ser of serieemoji"
+					value="{{ser}}">
+					{{ser}}
+				</option>
+			</select>
 		</div>
 
-		<div class="form-row row">
-			<!-- LIVELLO -->
-			<div class="col-4">
-				<label class="scritta">Livello</label>
-				<input
-					name="livello"
-					#livello="ngModel"
-					[(ngModel)]="emoji.livello"
-					type="number"
-					class="form-control"
-					placeholder="Livello"
-					[disabled]="!emoji.categoria"
-					[max]="emoji.livelloMassimo"
-					required>
-			</div>
-			<!-- COUNT -->
-			<div class="col-4">
-				<label class="scritta">Count</label>
-				<input
-					name="count"
-					#count="ngModel"
-					[(ngModel)]="emoji.count"
-					type="number"
-					class="form-control"
-					placeholder="Count"
-					required>
-			</div>
-			<!-- PUNTI -->
-			<div class="col-4">
-				<label class="scritta">Punti</label>
-				<input
-					name="punti"
-					#punti="ngModel"
-					[(ngModel)]="emoji.punti"
-					type="number"
-					class="form-control"
-					placeholder="Punti"
-					required>
-			</div>
-
-		</div>
-		<div class="row form-row">
-			<!-- IMMAGINE -->
-			<div class="col-4">
-				<label class="scritta">Immagine</label>
-				<input
-					name="immagine"
-					#immagine="ngModel"
-					[(ngModel)]="emoji.immagine"
-					type="text"
-					class="form-control"
-					placeholder="Immagine"
-					required>
-			</div>
-			<div class="col-8">
-				<label class="scritta">Descrizione</label>
-				<textarea
-					name="descrizione"
-					#descrizione="ngModel"
-					[(ngModel)]="emoji.descrizione"
-					class="form-control"
-					placeholder="Descrizione"
-					required></textarea>
-			</div>
+		<!-- COUNT -->
+		<div>
+			<label class="scritta">Count</label>
+			<input
+				name="count"
+				#count="ngModel"
+				[(ngModel)]="emoji.count"
+				type="number"
+				class="form-control"
+				placeholder="Count"
+				required>
 		</div>
 
-		<div class="row form-row">
-			<!-- PREMIO GRUPPO -->
-			<div class="col-3">
-				<input
-					name="premiogruppo"
-					#premiogruppo="ngModel"
-					[(ngModel)]="emoji.premiogruppo"
-					type="checkbox">
-				<label class="scritta">Premio di un gruppo</label>
-			</div>
-			<!-- SOLO DIAMANTE -->
-			<div class="col-3">
-				<input
-					name="solodiamante"
-					#solodiamante="ngModel"
-					[(ngModel)]="emoji.solodiamante"
-					type="checkbox">
-				<label class="scritta">
-					Sbloccabile solo con scatola di diamante
-				</label>
-			</div>
+		<!-- LIVELLO -->
+		<div *ngIf="emoji.count">
+			<label class="scritta">Livello</label>
+			<input
+				name="livello"
+				#livello="ngModel"
+				[(ngModel)]="emoji.livello"
+				type="number"
+				class="form-control"
+				placeholder="Livello"
+				[max]="emoji.livelloMassimo"
+				required>
 		</div>
 
-		<div class="form-row row">
-			<div class="col-12">
-				<button
-					class="btn secondary"
-					(click)="annulla()">
-					ANNULLA
-				</button>
-				<button
-					type="submit"
-					class="btn primary">
-					SALVA
-				</button>
-
-			</div>
+		<!-- PUNTI -->
+		<div *ngIf="emoji.count">
+			<label class="scritta">Punti</label>
+			<input
+				name="punti"
+				#punti="ngModel"
+				[(ngModel)]="emoji.punti"
+				type="number"
+				class="form-control"
+				placeholder="Punti"
+				required>
 		</div>
-	</form>
-</div>
+
+		<!-- IMMAGINE -->
+		<div>
+			<label class="scritta">Immagine</label>
+			<input
+				name="immagine"
+				#immagine="ngModel"
+				[(ngModel)]="emoji.immagine"
+				type="text"
+				class="form-control"
+				placeholder="Immagine"
+				required>
+		</div>
+
+		<!-- DESCRIZIONE -->
+		<div>
+			<label class="scritta">Descrizione</label>
+			<textarea
+				name="descrizione"
+				#descrizione="ngModel"
+				[(ngModel)]="emoji.descrizione"
+				class="form-control"
+				placeholder="Descrizione"
+				required></textarea>
+		</div>
+
+		<!-- COME OTTENERLA -->
+		<div *ngIf="emoji.count == 0">
+			<label class="scritta">Come ottenerla</label>
+			<textarea
+				name="comeottenerla"
+				#comeottenerla="ngModel"
+				[(ngModel)]="emoji.comeottenerla"
+				class="form-control"
+				placeholder="Come ottenerla"
+				required></textarea>
+		</div>
+
+		<!-- PREMIO GRUPPO -->
+		<div>
+			<input
+				name="premiogruppo"
+				#premiogruppo="ngModel"
+				[(ngModel)]="emoji.premiogruppo"
+				type="checkbox">
+			<label class="scritta">Premio di un gruppo</label>
+		</div>
+
+		<!-- SOLO DIAMANTE -->
+		<div>
+			<input
+				name="solodiamante"
+				#solodiamante="ngModel"
+				[(ngModel)]="emoji.solodiamante"
+				type="checkbox">
+			<label class="scritta">
+				Sbloccabile solo con scatola di diamante
+			</label>
+		</div>
+	</div>
+
+	<div class="modal-header">
+		<div class="col-12">
+			<button
+				class="btn secondary"
+				(click)="annulla()">
+				ANNULLA
+			</button>
+			<button
+				type="submit"
+				class="btn primary">
+				SALVA
+			</button>
+
+		</div>
+	</div>
+</form>

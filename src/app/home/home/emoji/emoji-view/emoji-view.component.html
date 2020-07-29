@@ -1,6 +1,16 @@
 <ng-template [ngIf]="emoji">
 	<div class="modal-header">
-		<div></div>
+		<div>
+			<h1
+				class="scritta"
+				*ngIf="!emoji.count">
+				<fa-icon
+					[icon]="lock"
+					class="oroscuro"></fa-icon>
+				Emoji bloccata
+			</h1>
+			<p>{{emoji.comeottenerla}}</p>
+		</div>
 		<a
 			class="scritta"
 			(click)="annulla()">
@@ -35,9 +45,18 @@
 							size="3x"
 							class="white"></fa-icon>
 					</div>
+
+					<div
+						class="premio serie"
+						*ngIf="emoji.serie">
+						<div>{{emoji.serie}}</div>
+
+					</div>
 					<img [src]="emoji.immagine">
 				</div>
-				<div class="content1-2">
+				<div
+					class="content1-2"
+					*ngIf="emoji.count">
 					<div>
 						<div class="punteggio {{emoji.categoria}} scritta">
 							<span
@@ -67,6 +86,17 @@
 					</div>
 
 				</div>
+				<div
+					class="actions"
+					*ngIf="!emoji.count">
+
+					<button
+						type="button"
+						class="btn primary"
+						(click)="modifica()">
+						Modifica
+					</button>
+				</div>
 
 			</div>
 			<div class="content2">
@@ -80,7 +110,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="livello">
+				<div
+					class="livello"
+					*ngIf="emoji.count">
 					<div class="punteggio {{emoji.categoria}} scritta">
 						<span
 							class="scritta"

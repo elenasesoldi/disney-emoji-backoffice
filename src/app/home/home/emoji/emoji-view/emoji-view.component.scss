@@ -126,6 +126,11 @@
     background-image: linear-gradient(45deg, $argentoscuro, $argento, $argentochiaro, $argento, $argentoscuro);
     border: 2px solid $argentoscuro;
   }
+
+  &.oro {
+    background-image: linear-gradient(45deg, $oroscuro, $oro, $orochiaro, $oro, $oroscuro);
+    border: 2px solid $oroscuro;
+  }
 }
 
 .livello {
@@ -148,6 +153,19 @@
   border-radius: 50px;
   padding: 7px;
   display: flex;
+
+  &.serie {
+    border-radius: 4px;
+    border: 2px solid $oroscuro;
+    padding: 2px 10px;
+    div {
+      color: white;
+      font-size: xx-large;
+      text-shadow: 1px 1px 0px $oroscuro, 1px 2px 0px $oroscuro, 2px 1px 0px $oroscuro, -1px -1px 0px $oroscuro,
+        -1px -2px 0px $oroscuro, -2px -1px 0px $oroscuro, 1px -1px 0px $oroscuro, 1px -2px 0px $oroscuro,
+        2px -1px 0px $oroscuro, -1px 1px 0px $oroscuro, -1px 2px 0px $oroscuro, -2px 1px 0px $oroscuro;
+    }
+  }
   * {
     margin: auto;
   }
@@ -156,5 +174,11 @@
 .argento {
   .premio {
     background-image: linear-gradient(45deg, $argentoscuro, $argento, $argentochiaro, $argento, $argentoscuro);
+  }
+}
+
+.oro {
+  .premio {
+    background-image: linear-gradient(45deg, $oroscuro, $oro, $orochiaro, $oro, $oroscuro);
   }
 }
