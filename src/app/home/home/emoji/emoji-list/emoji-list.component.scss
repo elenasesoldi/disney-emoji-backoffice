@@ -33,8 +33,22 @@
       width: 50%;
       margin: auto;
 
+      &.small {
+        width: 30%;
+      }
+
+      &.medium {
+        width: 40%;
+      }
+
       &.selezionata {
         width: 70%;
+        &.small {
+          width: 40%;
+        }
+        &.medium {
+          width: 55%;
+        }
       }
     }
 

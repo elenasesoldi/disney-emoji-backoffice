@@ -51,13 +51,9 @@ export class EmojiListComponent implements OnInit {
 
   constructor(private modalService: NgbModal) { }
 
-  ngOnInit() {
-
-    console.log(this.emojiOroColumns);
-  }
+  ngOnInit() { }
 
   selectEmoji(emoji: Emoji): void {
-    console.log(emoji);
     const modal = this.modalService.open(EmojiViewComponent, { centered: true, size: 'lg' });
     modal.componentInstance.emoji = emoji;
     this.selezionata = emoji;

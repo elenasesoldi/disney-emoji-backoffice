@@ -62,4 +62,12 @@ export class Emoji {
     return this.categoria === CategoriaEmoji.ORO;
   }
 
+  get imagebig(): boolean {
+    return this.nome === 'Lumière';
+  }
+
+  get imagemedium(): boolean {
+    return this.nome === 'Judy Hoops' || this.nome === 'Olaf' || this.nome === 'Cri-Cri';
+  }
+
 }

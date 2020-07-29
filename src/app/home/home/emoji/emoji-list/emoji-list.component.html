@@ -85,6 +85,8 @@
 						<img
 							[src]="e?.immagine"
 							[class.selezionata]="e.id == selezionata?.id"
+							[class.small]="e.imagebig"
+							[class.medium]="e.imagemedium"
 							(click)="selectEmoji(e)">
 						<div
 							class="cover-image"
