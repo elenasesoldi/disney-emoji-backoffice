@@ -10,6 +10,7 @@ import { EmojiViewComponent } from './home/emoji/emoji-view/emoji-view.component
 import { EmojiListComponent } from './home/emoji/emoji-list/emoji-list.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { HeaderComponent } from '../header/header.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,6 @@ import { HeaderComponent } from '../header/header.component';
     EmojiListComponent,
     EmojiViewComponent,
     HomeComponent,
-    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +25,8 @@ import { HeaderComponent } from '../header/header.component';
     HomeRoutingModule,
     NgbModalModule,
     FontAwesomeModule,
-    ScrollingModule
+    ScrollingModule,
+    SharedModule
   ]
 })
 export class HomeModule { }

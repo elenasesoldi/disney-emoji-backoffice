@@ -11,6 +11,9 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+  }, {
+    path: 'gruppi',
+    loadChildren: () => import('./gruppi/gruppi.module').then(m => m.GruppiModule)
   },
   {
     path: '**', // Navigate to Home Page if not found any page

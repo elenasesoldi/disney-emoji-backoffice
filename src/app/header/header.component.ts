@@ -9,6 +9,7 @@ import { ICONS } from '../icons/icons';
 export class HeaderComponent implements OnInit {
 
   home = ICONS.home;
+  group = ICONS.group;
 
   constructor() { }
 
