@@ -27,11 +27,11 @@ export class EmojiListComponent implements OnInit {
 
 
   get emojiArgento(): Emoji[] {
-    return this.emoji.filter(e => e.isArgento);
+    return this.emoji.filter(e => e.isArgento).sort((a, b) => a.ordine >= b.ordine ? 1 : -1);
   }
 
   get emojiOro(): Emoji[] {
-    return this.emoji.filter(e => e.isOro);
+    return this.emoji.filter(e => e.isOro).sort((a, b) => a.ordine >= b.ordine ? 1 : -1);
   }
 
   get emojiArgentoColumns(): number {

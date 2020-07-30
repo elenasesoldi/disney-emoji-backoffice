@@ -67,7 +67,7 @@ export class Emoji {
   }
 
   get imagemedium(): boolean {
-    return this.nome === 'Judy Hoops' || this.nome === 'Olaf' || this.nome === 'Cri-Cri';
+    return this.nome === 'Judy Hoops' || this.nome === 'Olaf' || this.nome === 'Cri-Cri' || this.nome === 'Paura';
   }
 
 }
