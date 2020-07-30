@@ -8,10 +8,10 @@ import { EmojiGruppo } from '../model/gruppo.model';
 @Injectable({
   providedIn: 'root',
 })
-export class EmojiService {
+export class GruppoService {
 
-  private gruppoSubject = new BehaviorSubject<Gruppo[]>(undefined);
-  public gruppo = this.gruppoSubject.asObservable();
+  private gruppiSubject = new BehaviorSubject<Gruppo[]>(undefined);
+  public gruppi = this.gruppiSubject.asObservable();
 
   private emojiSubject = new BehaviorSubject<EmojiGruppo[]>(undefined);
   public emoji = this.emojiSubject.asObservable();
@@ -27,10 +27,10 @@ export class EmojiService {
     const g = this.storage.get('gruppi');
     if (g) {
       const gr = g.map(r => plainToClass(Gruppo, r));
-      this.gruppoSubject.next(g);
-      console.log(this.gruppoSubject.value);
+      this.gruppiSubject.next(g);
+      console.log(this.gruppiSubject.value);
     } else {
-      this.gruppoSubject.next([]);
+      this.gruppiSubject.next([]);
       this.memorizzaGruppi();
     }
   }
@@ -48,7 +48,7 @@ export class EmojiService {
   }
 
   memorizzaGruppi(): void {
-    const gs = classToPlain(this.gruppoSubject.value);
+    const gs = classToPlain(this.gruppiSubject.value);
     this.storage.set('gruppi', gs);
   }
 
@@ -58,24 +58,25 @@ export class EmojiService {
   }
 
   aggiungiGruppo(gruppo: Gruppo): void {
-    this.gruppoSubject.value.push(gruppo);
+    this.gruppiSubject.value.push(gruppo);
     this.memorizzaGruppi();
   }
 
   modificaGruppo(gruppo: Gruppo): void {
-    const gs = this.gruppoSubject.value.filter(g => g.nome !== gruppo.nome);
+    const gs = this.gruppiSubject.value.filter(g => g.nome !== gruppo.nome);
     gs.push(gruppo);
-    this.gruppoSubject.next(gs);
+    this.gruppiSubject.next(gs);
     this.memorizzaGruppi();
   }
 
   prendi(id: number): Gruppo {
-    return this.gruppoSubject.value.find(g => g.id === id);
+    return this.gruppiSubject.value.find(g => g.id === id);
   }
 
   aggiungiEmojiGruppo(gruppoid: number, emojiid: number): void {
     const eg = new EmojiGruppo();
     eg.id = this.emojiTotali + 1;
+    eg.ordine = this.emojiTotali + 1;
     eg.gruppoid = gruppoid;
     eg.emojiid = emojiid;
 
@@ -90,6 +91,10 @@ export class EmojiService {
 
   get emojiTotali(): number {
     return this.emojiSubject.value.length;
+  }
+
+  get gruppiTotali(): number {
+    return this.gruppiSubject.value.length;
   }
 
 

@@ -1,0 +1,21 @@
+<div class="group-view">
+	<h2 class="scritta">{{gruppo.nome}}</h2>
+	<div>
+		<img [src]="gruppo.immagine">
+		<div class="img-shadow"></div>
+	</div>
+	<div
+		*ngIf="gruppo.emojipremio"
+		class="emoji-premio">
+		<p style="color: white;">
+			Ottieni tutte le Emoji doppie di {{gruppo.nome}} per vincere
+			<span *ngIf="emojipremio">
+				<img
+					[src]="emojipremio.immagine"
+					class="piccola-emoji">
+			</span>
+
+		</p>
+	</div>
+
+</div>

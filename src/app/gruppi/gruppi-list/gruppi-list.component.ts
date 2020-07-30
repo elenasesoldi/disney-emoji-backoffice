@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Gruppo } from '../../../model/gruppo.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { GruppiEditComponent } from '../gruppi-edit/gruppi-edit.component';
 
 @Component({
   selector: 'app-gruppi-list',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GruppiListComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  gruppi: Gruppo[];
+
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
   }
+
+  aggiungi(): void {
+    const modal = this.modalService.open(GruppiEditComponent);
+  }
+
 
 }

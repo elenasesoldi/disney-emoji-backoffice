@@ -8,11 +8,15 @@ import { GruppiRoutingModule } from './gruppi-routing.module';
 import { GruppiComponent } from './gruppi.component';
 import { GruppiListComponent } from './gruppi-list/gruppi-list.component';
 import { SharedModule } from '../shared/shared.module';
+import { GruppiEditComponent } from './gruppi-edit/gruppi-edit.component';
+import { GruppoViewComponent } from './gruppi-list/gruppo-view/gruppo-view.component';
 
 @NgModule({
   declarations: [
     GruppiComponent,
-    GruppiListComponent
+    GruppiListComponent,
+    GruppiEditComponent,
+    GruppoViewComponent
 
   ],
   imports: [

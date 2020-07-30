@@ -58,6 +58,7 @@ export class EmojiListComponent implements OnInit {
     modal.componentInstance.emoji = emoji;
     this.selezionata = emoji;
   }
+
   aggiungi(): void {
     const modal = this.modalService.open(EditEmojiComponent, { centered: true, size: 'lg' });
 

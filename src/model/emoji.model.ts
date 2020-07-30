@@ -1,3 +1,4 @@
+import { Base } from './base.model';
 export enum CategoriaEmoji {
   ARGENTO = 'argento',
   ORO = 'oro',
@@ -12,8 +13,8 @@ export enum SerieEmoji {
   III = 'III'
 }
 
-export class Emoji {
-  id: number;
+export class Emoji extends Base {
+
   nome: string;
   categoria: CategoriaEmoji;
   livello: number;
@@ -21,13 +22,13 @@ export class Emoji {
   count: number;
   serie: SerieEmoji;
   immagine: string;
-  ordine: number;
   descrizione: string;
   premiogruppo: boolean;
   solodiamante: boolean;
   comeottenerla: string;
 
   constructor(nome?: string) {
+    super();
     this.nome = nome;
     this.premiogruppo = false;
     this.solodiamante = false;

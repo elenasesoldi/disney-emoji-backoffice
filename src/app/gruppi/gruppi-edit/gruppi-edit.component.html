@@ -1,0 +1,81 @@
+<div class="modal-header">
+	<div style="width: -webkit-fill-available;">
+		<h1 class="modal-title scritta2">{{titolo}}</h1>
+	</div>
+
+	<a
+		class="scritta"
+		(click)="annulla()">
+		<h2
+			aria-hidden="true"
+			style="margin-right:25px">
+			×
+		</h2>
+	</a>
+</div>
+
+<form
+	#editForm="ngForm"
+	(ngSubmit)="editForm.valid && salva()"
+	class="disney-form">
+
+	<div class="modal-body">
+
+		<!-- NOME -->
+		<div>
+			<label class="scritta">Nome</label>
+			<input
+				name="nome"
+				#nome="ngModel"
+				[(ngModel)]="gruppo.nome"
+				type="text"
+				class="form-control"
+				placeholder="Nome"
+				required>
+		</div>
+		<!-- IMMAGINE -->
+		<div>
+			<label class="scritta">Immagine</label>
+			<input
+				name="immagine"
+				#immagine="ngModel"
+				[(ngModel)]="gruppo.immagine"
+				type="text"
+				class="form-control"
+				placeholder="Immagine"
+				required>
+		</div>
+		<!-- EMOJI PREMIO -->
+		<div>
+			<label class="scritta">Emoji Premio</label>
+			<select
+				name="emojipremio"
+				#emojipremio="ngModel"
+				[(ngModel)]="gruppo.emojipremio"
+				class="form-control"
+				placeholder="emojipremio">
+				<option
+					*ngFor="let e of emoji"
+					[value]="e.id">
+					{{e.nome}}
+				</option>
+			</select>
+		</div>
+
+		<div class="modal-header">
+			<div class="col-12">
+				<button
+					class="btn secondary"
+					(click)="annulla()">
+					ANNULLA
+				</button>
+				<button
+					type="submit"
+					class="btn primary">
+					SALVA
+				</button>
+
+			</div>
+		</div>
+	</div>
+</form>
