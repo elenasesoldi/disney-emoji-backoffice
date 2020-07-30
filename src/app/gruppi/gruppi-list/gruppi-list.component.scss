@@ -1,0 +1,10 @@
+.lista-gruppi {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  app-gruppo-view {
+    width: 50%;
+  }
+}

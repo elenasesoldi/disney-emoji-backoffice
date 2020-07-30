@@ -1,13 +1,13 @@
 <div class="group-view">
-	<h2 class="scritta">{{gruppo.nome}}</h2>
+	<h1 class="scritta">{{gruppo.nome}}</h1>
 	<div>
 		<img [src]="gruppo.immagine">
 		<div class="img-shadow"></div>
 	</div>
 	<div
-		*ngIf="gruppo.emojipremio"
+		[ngStyle]="{'opacity': gruppo.emojipremio ? 1 : 0}"
 		class="emoji-premio">
-		<p style="color: white;">
+		<p>
 			Ottieni tutte le Emoji doppie di {{gruppo.nome}} per vincere
 			<span *ngIf="emojipremio">
 				<img

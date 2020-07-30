@@ -20,10 +20,9 @@ export class GruppoViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.gruppo.emojipremio) {
-      this.emojipremio = this.emojiService.prendi(+this.gruppo.emojipremio);
-      console.log(this.emojipremio);
-    }
+
+    const id = this.gruppo.emojipremio ? this.gruppo.emojipremio : 1;
+    this.emojipremio = this.emojiService.prendi(+id);
   }
 
 }
