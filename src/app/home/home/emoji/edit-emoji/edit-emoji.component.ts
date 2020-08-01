@@ -37,6 +37,7 @@ export class EditEmojiComponent implements OnInit {
   }
 
   salva(): void {
+    this.emoji.update();
     if (!this.emoji.id) {
       this.emoji.id = this.emojiService.emojiTotali + 1;
       this.emoji.ordine = this.emojiService.emojiTotali + 1;

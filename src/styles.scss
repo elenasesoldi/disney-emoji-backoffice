@@ -119,6 +119,23 @@ html {
     -1px 2px 0px white, -2px 1px 0px white;
 }
 
+.modal-md {
+  .modal-content {
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+
+    .modal-header {
+      height: 35%;
+    }
+
+    .modal-body {
+      height: 65%;
+    }
+  }
+}
+
 .modal-content {
   background-image: linear-gradient(#93d6f7, #6ac8ff);
   border: 3px solid #fefffb;

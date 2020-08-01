@@ -41,6 +41,7 @@ export class GruppiEditComponent implements OnInit {
   }
 
   salva(): void {
+    this.gruppo.update();
     if (!this.gruppo.id) {
       this.gruppo.id = this.gruppoService.gruppiTotali + 1;
       this.gruppo.ordine = this.gruppoService.gruppiTotali + 1;

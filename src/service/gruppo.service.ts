@@ -4,6 +4,7 @@ import { Gruppo } from 'src/model/gruppo.model';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { plainToClass, classToPlain } from 'class-transformer';
 import { EmojiGruppo } from '../model/gruppo.model';
+import { EmojiService } from './emoji.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,8 @@ export class GruppoService {
   public emoji = this.emojiSubject.asObservable();
 
   constructor(
-    @Inject(LOCAL_STORAGE) private storage: StorageService
+    @Inject(LOCAL_STORAGE) private storage: StorageService,
+    private emojiService: EmojiService
   ) {
     this.caricaGruppi();
     this.caricaEmoji();
@@ -55,6 +57,7 @@ export class GruppoService {
   memorizzaEmoji(): void {
     const gs = classToPlain(this.emojiSubject.value);
     this.storage.set('emojigruppi', gs);
+    console.log(gs);
   }
 
   aggiungiGruppo(gruppo: Gruppo): void {
@@ -74,11 +77,10 @@ export class GruppoService {
   }
 
   aggiungiEmojiGruppo(gruppoid: number, emojiid: number): void {
-    const eg = new EmojiGruppo();
+    const eg = new EmojiGruppo(gruppoid, emojiid);
     eg.id = this.emojiTotali + 1;
     eg.ordine = this.emojiTotali + 1;
-    eg.gruppoid = gruppoid;
-    eg.emojiid = emojiid;
+    eg.update();
 
     this.emojiSubject.value.push(eg);
     this.memorizzaEmoji();
@@ -86,7 +88,12 @@ export class GruppoService {
   }
 
   prendiEmoji(gruppoid: number): EmojiGruppo[] {
-    return this.emojiSubject.value.filter(el => el.gruppoid === gruppoid);
+    const eg = this.emojiSubject.value.filter(el => el.gruppoid === gruppoid);
+    for (const e of eg) {
+      e.emoji = this.emojiService.prendi(e.emojiid);
+    }
+
+    return eg;
   }
 
   get emojiTotali(): number {

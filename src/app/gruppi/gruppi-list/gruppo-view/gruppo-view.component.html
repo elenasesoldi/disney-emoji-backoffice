@@ -1,5 +1,14 @@
 <div class="group-view">
-	<h1 class="scritta">{{gruppo.nome}}</h1>
+	<div class="group-header">
+		<h1 class="scritta">{{gruppo.nome}}</h1>
+		<button
+			type="button"
+			class="btn primary"
+			(click)="aggiungiEmoji()">
+			<fa-icon [icon]="plus"></fa-icon>
+		</button>
+	</div>
+
 	<div>
 		<img [src]="gruppo.immagine">
 		<div class="img-shadow"></div>

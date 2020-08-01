@@ -10,13 +10,15 @@ import { GruppiListComponent } from './gruppi-list/gruppi-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { GruppiEditComponent } from './gruppi-edit/gruppi-edit.component';
 import { GruppoViewComponent } from './gruppi-list/gruppo-view/gruppo-view.component';
+import { AddEmojiComponent } from './gruppi-list/gruppo-view/add-emoji/add-emoji.component';
 
 @NgModule({
   declarations: [
     GruppiComponent,
     GruppiListComponent,
     GruppiEditComponent,
-    GruppoViewComponent
+    GruppoViewComponent,
+    AddEmojiComponent
 
   ],
   imports: [

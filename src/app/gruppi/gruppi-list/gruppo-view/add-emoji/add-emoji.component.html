@@ -1,0 +1,34 @@
+<div class="modal-header">
+	<div style="width: -webkit-fill-available;">
+		<h1 class="modal-title scritta2">Aggiungi Emoji a {{gruppo.nome}}</h1>
+	</div>
+
+	<a
+		class="scritta"
+		(click)="annulla()">
+		<h2
+			aria-hidden="true"
+			style="margin-right:25px">
+			×
+		</h2>
+	</a>
+</div>
+
+<div class="modal-body">
+	<div class="row">
+
+		<input
+			type="text"
+			class="form-control"
+			placeholder="Filtra Emoji per nome"
+			(keyup)="updateFilter($event)">
+	</div>
+	<ul [style.column-count]="4">
+		<li
+			*ngFor="let em of filteremoji"
+			class="scritta"
+			(click)="aggiungiEmoji(em)">
+			{{em.nome}}
+		</li>
+	</ul>
+</div>
