@@ -1,17 +1,59 @@
 <div class="group-view">
 	<div class="group-header">
 		<h1 class="scritta">{{gruppo.nome}}</h1>
-		<button
-			type="button"
-			class="btn primary"
-			(click)="aggiungiEmoji()">
-			<fa-icon [icon]="plus"></fa-icon>
-		</button>
+
 	</div>
 
 	<div>
 		<img [src]="gruppo.immagine">
-		<div class="img-shadow"></div>
+		<div class="emoji-list">
+			<div class="row">
+				<button
+					type="button"
+					class="btn primary"
+					(click)="aggiungiEmoji()">
+					<fa-icon [icon]="plus"></fa-icon>
+				</button>
+			</div>
+			<ul class="layout-{{emojiGruppo.length}}">
+				<li *ngFor="let emoji of emojiGruppo">
+					<img [src]="emoji.emoji.immagine">
+					<div class="count">
+						<div
+							class="count-inner"
+							[style.width]="(emoji.emoji.count / emoji.emoji.countMassimo * 100) + '%'">
+
+						</div>
+						<div class="scritta">
+							<span>
+								{{emoji.emoji.count}}/{{emoji.emoji.countMassimo}}
+							</span>
+						</div>
+
+					</div>
+
+					<div class="cover">
+						<div class="buttons">
+							<button
+								type="button"
+								class="btn secondary"
+								(click)="eliminaEmoji(emoji)">
+								<fa-icon [icon]="minus"></fa-icon>
+							</button>
+							<button
+								type="button"
+								class="btn secondary"
+								(click)="mostraEmoji(emoji)">
+								<fa-icon [icon]="details"></fa-icon>
+							</button>
+						</div>
+
+					</div>
+
+				</li>
+			</ul>
+
+		</div>
 	</div>
 	<div
 		[ngStyle]="{'opacity': gruppo.emojipremio ? 1 : 0}"
