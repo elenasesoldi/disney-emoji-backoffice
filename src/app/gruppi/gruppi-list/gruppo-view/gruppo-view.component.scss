@@ -75,6 +75,16 @@
             display: inline-block;
           }
         }
+
+        &.layout-3,
+        &.layout-4,
+        &.layout-2 {
+          column-count: 3;
+          li {
+            height: 50%;
+            display: inline-block;
+          }
+        }
         list-style: none;
         height: 100%;
 
@@ -143,5 +153,18 @@
         }
       }
     }
+  }
+}
+
+.statistics {
+  display: flex !important;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  > div {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 5%;
   }
 }

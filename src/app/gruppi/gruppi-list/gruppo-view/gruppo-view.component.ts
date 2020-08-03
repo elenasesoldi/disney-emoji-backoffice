@@ -25,6 +25,23 @@ export class GruppoViewComponent implements OnInit {
   minus = ICONS.minus;
   details = ICONS.details;
 
+  get statistics(): any {
+    let c = 0;
+    let t = 0;
+    for (const e of this.emojiGruppo) {
+      if (e.emoji) {
+
+        c += e.emoji.count;
+        t += e.emoji.countMassimo;
+      }
+    }
+
+    return {
+      count: c,
+      total: t
+    };
+  }
+
   constructor(
     private emojiService: EmojiService,
     private gruppoService: GruppoService,

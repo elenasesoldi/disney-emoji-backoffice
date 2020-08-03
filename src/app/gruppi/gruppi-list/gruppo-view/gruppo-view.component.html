@@ -17,16 +17,16 @@
 			</div>
 			<ul class="layout-{{emojiGruppo.length}}">
 				<li *ngFor="let emoji of emojiGruppo">
-					<img [src]="emoji.emoji.immagine">
+					<img [src]="emoji.emoji?.immagine">
 					<div class="count">
 						<div
 							class="count-inner"
-							[style.width]="(emoji.emoji.count / emoji.emoji.countMassimo * 100) + '%'">
+							[style.width]="(emoji.emoji?.count / emoji.emoji?.countMassimo * 100) + '%'">
 
 						</div>
 						<div class="scritta">
 							<span>
-								{{emoji.emoji.count}}/{{emoji.emoji.countMassimo}}
+								{{emoji.emoji?.count}}/{{emoji.emoji?.countMassimo}}
 							</span>
 						</div>
 
@@ -54,6 +54,27 @@
 			</ul>
 
 		</div>
+	</div>
+	<div
+		class="statistics"
+		*ngIf="statistics.count != statistics.total">
+		<div>
+			<div>Emoji ottenute: {{statistics.count}}</div>
+			<div>Emoji totali: {{statistics.total}}</div>
+		</div>
+		<div>
+			<div>
+				Percentuale progresso: {{(statistics.count / statistics.total) | percent}}
+			</div>
+		</div>
+
+	</div>
+	<div *ngIf="statistics.count == statistics.total">
+		<h1
+			class="scritta2"
+			style="margin:auto;">
+			Completato!
+		</h1>
 	</div>
 	<div
 		[ngStyle]="{'opacity': gruppo.emojipremio ? 1 : 0}"

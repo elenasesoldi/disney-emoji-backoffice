@@ -193,6 +193,12 @@ fa-icon {
     }
   }
 
+  &.verde {
+    svg {
+      color: green;
+    }
+  }
+
   &.oro {
     svg {
       color: $oro;

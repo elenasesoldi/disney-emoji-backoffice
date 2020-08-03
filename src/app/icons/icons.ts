@@ -1,4 +1,4 @@
-import { faSmile, faGem, faLock, faHome, faUsers, faPlus, faMinus, faEdit, faInfo } from '@fortawesome/free-solid-svg-icons';
+import { faSmile, faGem, faLock, faHome, faUsers, faPlus, faMinus, faEdit, faInfo, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 
 export class ICONS {
@@ -10,4 +10,5 @@ export class ICONS {
   public static plus = faPlus;
   public static minus = faMinus;
   public static details = faInfo;
+  public static check = faCheck;
 }

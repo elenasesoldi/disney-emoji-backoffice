@@ -71,4 +71,8 @@ export class Emoji extends Base {
     return this.nome === 'Judy Hoops' || this.nome === 'Olaf' || this.nome === 'Cri-Cri' || this.nome === 'Paura';
   }
 
+  get completa(): boolean {
+    return this.count === this.countMassimo;
+  }
+
 }

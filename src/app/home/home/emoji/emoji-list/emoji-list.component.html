@@ -42,6 +42,26 @@
 							[src]="e?.immagine"
 							[class.selezionata]="e.id == selezionata?.id"
 							(click)="selectEmoji(e)">
+						<div
+							class="cover-image"
+							[class.display]="!e.count"
+							(click)="selectEmoji(e)"></div>
+						<div
+							class="lock"
+							*ngIf="!e.count">
+
+							<fa-icon
+								[icon]="lock"
+								class="oroscuro"></fa-icon>
+						</div>
+						<div
+							class="lock"
+							*ngIf="e.completa">
+							<fa-icon
+								[icon]="check"
+								class="verde"></fa-icon>
+						</div>
+
 					</div>
 				</div>
 
@@ -99,6 +119,13 @@
 							<fa-icon
 								[icon]="lock"
 								class="oroscuro"></fa-icon>
+						</div>
+						<div
+							class="lock"
+							*ngIf="e.completa">
+							<fa-icon
+								[icon]="check"
+								class="verde"></fa-icon>
 						</div>
 
 					</div>

@@ -24,6 +24,7 @@ export class EmojiListComponent implements OnInit {
   smile = ICONS.smile;
   diamond = ICONS.diamond;
   lock = ICONS.lock;
+  check = ICONS.check;
 
 
   get emojiArgento(): Emoji[] {
