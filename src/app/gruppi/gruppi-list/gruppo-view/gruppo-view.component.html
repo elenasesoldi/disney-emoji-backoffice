@@ -57,7 +57,7 @@
 	</div>
 	<div
 		class="statistics"
-		*ngIf="statistics.count != statistics.total">
+		[ngStyle]="{'opacity': statistics.count != statistics.total ? 1 : 0}">
 		<div>
 			<div>Emoji ottenute: {{statistics.count}}</div>
 			<div>Emoji totali: {{statistics.total}}</div>
@@ -69,7 +69,7 @@
 		</div>
 
 	</div>
-	<div *ngIf="statistics.count == statistics.total">
+	<div [ngStyle]="{'opacity': statistics.count == statistics.total ? 1 : 0}">
 		<h1
 			class="scritta2"
 			style="margin:auto;">

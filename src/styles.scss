@@ -36,6 +36,10 @@ $disney-emoji-backoffice-theme: mat-light-theme(
   src: url(../src/app/fonts/Roboto/Roboto-Regular.ttf) format('truetype');
 }
 
+::selection {
+  background-color: #c3cfe2;
+}
+
 * {
   font-family: 'roboto';
   margin: 0;
@@ -110,6 +114,18 @@ html {
   text-shadow: 1px 1px 0px white, 1px 2px 0px white, 2px 1px 0px white, -1px -1px 0px white, -1px -2px 0px white,
     -2px -1px 0px white, 1px -1px 0px white, 1px -2px 0px white, 2px -1px 0px white, -1px 1px 0px white,
     -1px 2px 0px white, -2px 1px 0px white;
+  &.argento {
+    color: $argento;
+  }
+  &.oro {
+    color: $oro;
+  }
+  &.storia {
+    color: $storia;
+  }
+  &.arcobaleno {
+    color: $arcobaleno6;
+  }
 }
 
 .scritta2 {

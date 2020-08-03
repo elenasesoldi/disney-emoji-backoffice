@@ -35,19 +35,14 @@ export class EmojiListComponent implements OnInit {
     return this.emoji.filter(e => e.isOro).sort((a, b) => a.ordine >= b.ordine ? 1 : -1);
   }
 
-  get emojiArgentoColumns(): number {
-    const floor = Math.floor(this.emojiArgento.length / 3);
-    const notfloor = this.emojiArgento.length / 3;
-
-    return (floor === notfloor) ? floor : floor + 1;
+  get emojiStoria(): Emoji[] {
+    return this.emoji.filter(e => e.isStoria).sort((a, b) => a.ordine >= b.ordine ? 1 : -1);
   }
 
-  get emojiOroColumns(): number {
-    const floor = Math.floor(this.emojiOro.length / 3);
-    const notfloor = this.emojiOro.length / 3;
-
-    return (floor === notfloor) ? floor : floor + 1;
+  get emojiArcobaleno(): Emoji[] {
+    return this.emoji.filter(e => e.isArcobaleno).sort((a, b) => a.ordine >= b.ordine ? 1 : -1);
   }
+
 
 
   constructor(private modalService: NgbModal) { }

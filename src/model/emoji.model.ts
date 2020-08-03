@@ -50,8 +50,15 @@ export class Emoji extends Base {
         return 19;
       case CategoriaEmoji.CATTIVO:
         return 18;
+      case CategoriaEmoji.STORIA:
+        if (this.nome === 'Spirito di Mufasa') { return 1; }
+        if (this.nome === 'Rapunzel con diadema') { return 2; }
+
+      case CategoriaEmoji.ARCOBALENO:
+        if (this.nome === 'Topolino natalizio') { return 2; }
+
       default:
-        return undefined;
+        return 1;
     }
   }
 
@@ -63,12 +70,50 @@ export class Emoji extends Base {
     return this.categoria === CategoriaEmoji.ORO;
   }
 
+  get isStoria(): boolean {
+    return this.categoria === CategoriaEmoji.STORIA;
+  }
+
+  get isArcobaleno(): boolean {
+    return this.categoria === CategoriaEmoji.ARCOBALENO;
+  }
+
+
   get imagebig(): boolean {
-    return this.nome === 'Lumière';
+    const images = [];
+    images.push('Lumière');
+
+    return images.find(e => e === this.nome);
   }
 
   get imagemedium(): boolean {
-    return this.nome === 'Judy Hoops' || this.nome === 'Olaf' || this.nome === 'Cri-Cri' || this.nome === 'Paura';
+    const images = [];
+    images.push('Judy Hoops');
+    images.push('Olaf');
+    images.push('Cri-Cri');
+    images.push('Paura');
+    images.push('Maximus');
+    return images.find(e => e === this.nome);
+  }
+
+  get imagesmall(): boolean {
+    const images = [];
+    images.push('Brontolo');
+    images.push('Pacha');
+    images.push('Duke Caboom');
+    images.push('Flit');
+    images.push('Alieno');
+    images.push('Ray');
+    images.push('Principe Azzurro');
+    images.push('HeiHei');
+    images.push('Louis');
+    images.push('Meeko');
+    images.push('Finnick');
+    images.push('Flash');
+    images.push('Calhoun');
+    images.push('Bo Peep');
+    images.push('Forky');
+    return images.find(e => e === this.nome);
   }
 
   get completa(): boolean {

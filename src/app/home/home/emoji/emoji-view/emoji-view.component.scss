@@ -131,6 +131,25 @@
     background-image: linear-gradient(45deg, $oroscuro, $oro, $orochiaro, $oro, $oroscuro);
     border: 2px solid $oroscuro;
   }
+
+  &.storia {
+    background-image: linear-gradient(45deg, $storiascuro, $storia, $storiachiaro, $storia, $storiascuro);
+    border: 2px solid $storiascuro;
+  }
+
+  &.arcobaleno {
+    background-image: linear-gradient(
+      45deg,
+      $arcobaleno1,
+      $arcobaleno2,
+      $arcobaleno3,
+      $arcobaleno4,
+      $arcobaleno5,
+      $arcobaleno6,
+      $arcobaleno7
+    );
+    border: 2px solid $arcobaleno6;
+  }
 }
 
 .livello {
@@ -180,5 +199,26 @@
 .oro {
   .premio {
     background-image: linear-gradient(45deg, $oroscuro, $oro, $orochiaro, $oro, $oroscuro);
+  }
+}
+
+.arcobaleno {
+  .premio {
+    background-image: linear-gradient(
+      45deg,
+      $arcobaleno1,
+      $arcobaleno2,
+      $arcobaleno3,
+      $arcobaleno4,
+      $arcobaleno5,
+      $arcobaleno6,
+      $arcobaleno7
+    );
+  }
+}
+
+.storia {
+  .premio {
+    background-image: linear-gradient(45deg, $storiascuro, $storia, $storiachiaro, $storia, $storiascuro);
   }
 }
