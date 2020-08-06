@@ -57,6 +57,23 @@ export class EmojiService {
     return this.emojiSubject.value.filter(e => e.categoria === categoria);
   }
 
+  prendiEmoji(campo: string, valore: string, categoria?: CategoriaEmoji): Emoji[] {
+    const es = categoria ?
+      this.emojiSubject.value.filter(e => (e.categoria === categoria && e[campo] === valore)) :
+      this.emojiSubject.value.filter(e => e[campo] === valore);
+
+    return es;
+  }
+
+  contaEmoji(campo: string, valore: string, categoria?: CategoriaEmoji): number {
+
+    const es = categoria ?
+      this.emojiSubject.value.filter(e => (e.categoria === categoria && e[campo] === valore)) :
+      this.emojiSubject.value.filter(e => e[campo] === valore);
+
+    return es.length;
+  }
+
   get emojiTotali(): number {
     return this.emojiSubject.value.length;
   }

@@ -43,6 +43,10 @@ export class EmojiListComponent implements OnInit {
     return this.emoji.filter(e => e.isArcobaleno).sort((a, b) => a.ordine >= b.ordine ? 1 : -1);
   }
 
+  get emojiCattivo(): Emoji[] {
+    return this.emoji.filter(e => e.isCattivo).sort((a, b) => a.ordine >= b.ordine ? 1 : -1);
+  }
+
 
 
   constructor(private modalService: NgbModal) { }

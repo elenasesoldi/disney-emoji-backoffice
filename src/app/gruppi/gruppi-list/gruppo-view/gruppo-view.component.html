@@ -1,6 +1,12 @@
 <div class="group-view">
 	<div class="group-header">
 		<h1 class="scritta">{{gruppo.nome}}</h1>
+		<button
+			type="button"
+			class="btn primary"
+			(click)="modificaGruppo()">
+			<fa-icon [icon]="edit"></fa-icon>
+		</button>
 
 	</div>
 

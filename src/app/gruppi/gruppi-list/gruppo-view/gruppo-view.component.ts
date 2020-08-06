@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddEmojiComponent } from './add-emoji/add-emoji.component';
 import { EditEmojiComponent } from '../../../home/home/emoji/edit-emoji/edit-emoji.component';
 import { EmojiViewComponent } from '../../../home/home/emoji/emoji-view/emoji-view.component';
+import { GruppiEditComponent } from '../../gruppi-edit/gruppi-edit.component';
 
 @Component({
   selector: 'app-gruppo-view',
@@ -24,6 +25,7 @@ export class GruppoViewComponent implements OnInit {
   plus = ICONS.plus;
   minus = ICONS.minus;
   details = ICONS.details;
+  edit = ICONS.edit;
 
   get statistics(): any {
     let c = 0;
@@ -83,6 +85,11 @@ export class GruppoViewComponent implements OnInit {
     const modal = this.modalService.open(EmojiViewComponent);
     modal.componentInstance.emoji = emoji.emoji;
 
+  }
+
+  modificaGruppo(): void {
+    const modal = this.modalService.open(GruppiEditComponent);
+    modal.componentInstance.gruppo = this.gruppo;
   }
 
 

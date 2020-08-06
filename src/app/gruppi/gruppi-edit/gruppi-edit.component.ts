@@ -4,6 +4,7 @@ import { GruppoService } from '../../../service/gruppo.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Emoji } from 'src/model/emoji.model';
 import { EmojiService } from 'src/service/emoji.service';
+import { plainToClass } from 'class-transformer';
 
 @Component({
   selector: 'app-gruppi-edit',
@@ -41,6 +42,7 @@ export class GruppiEditComponent implements OnInit {
   }
 
   salva(): void {
+    this.gruppo = plainToClass(Gruppo, this.gruppo);
     this.gruppo.update();
     if (!this.gruppo.id) {
       this.gruppo.id = this.gruppoService.gruppiTotali + 1;

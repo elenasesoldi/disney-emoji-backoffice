@@ -52,13 +52,24 @@ export class Emoji extends Base {
         return 18;
       case CategoriaEmoji.STORIA:
         if (this.nome === 'Spirito di Mufasa') { return 1; }
-        if (this.nome === 'Rapunzel con diadema') { return 2; }
+        return 19;
 
       case CategoriaEmoji.ARCOBALENO:
-        if (this.nome === 'Topolino natalizio') { return 2; }
 
-      default:
-        return 1;
+        const max1 = ['Yen Sid'];
+        const max3 = ['Fata madrina', 'Fatina blu', 'Incantatrice'];
+        const max5 = ['Siberius', 'Nonna Tala'];
+        if (max1.find(n => n === this.nome)) {
+          return 1;
+        }
+        if (max3.find(n => n === this.nome)) {
+          return 3;
+        }
+        if (max5.find(n => n === this.nome)) {
+          return 5;
+        }
+
+        return 19;
     }
   }
 
@@ -78,6 +89,10 @@ export class Emoji extends Base {
     return this.categoria === CategoriaEmoji.ARCOBALENO;
   }
 
+  get isCattivo(): boolean {
+    return this.categoria === CategoriaEmoji.CATTIVO;
+  }
+
 
   get imagebig(): boolean {
     const images = [];
@@ -93,6 +108,7 @@ export class Emoji extends Base {
     images.push('Cri-Cri');
     images.push('Paura');
     images.push('Maximus');
+    images.push('Ade');
     return images.find(e => e === this.nome);
   }
 

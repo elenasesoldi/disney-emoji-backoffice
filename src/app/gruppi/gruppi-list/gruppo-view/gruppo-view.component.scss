@@ -12,10 +12,12 @@
   .group-header {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     h1 {
-      text-align: center;
-      margin: 20px 0 40px 0;
+      margin: 20px 0 40px 10px;
+    }
+    button {
+      margin: 20px 10px 40px 0;
     }
   }
 
@@ -79,10 +81,13 @@
         &.layout-3,
         &.layout-4,
         &.layout-2 {
-          column-count: 3;
+          column-count: 2;
           li {
             height: 50%;
             display: inline-block;
+            img {
+              margin-left: 30%;
+            }
           }
         }
         list-style: none;
@@ -96,7 +101,8 @@
           }
           img {
             opacity: 1;
-            width: 40%;
+            height: 45%;
+            width: auto;
             margin-left: 20%;
             border-radius: unset;
           }

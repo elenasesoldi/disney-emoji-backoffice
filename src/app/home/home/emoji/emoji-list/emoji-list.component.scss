@@ -16,6 +16,10 @@
     background-image: linear-gradient(45deg, $storiascuro, $storia, $storiachiaro, $storia, $storiascuro);
   }
 
+  &.cattivo {
+    background-image: linear-gradient(45deg, $cattivoscuro, $cattivo, $cattivochiaro, $cattivo, $cattivoscuro);
+  }
+
   &.arcobaleno {
     background-image: linear-gradient(
       45deg,
@@ -145,6 +149,12 @@ ul {
 .storia {
   .premio {
     background-image: linear-gradient(45deg, $storiascuro, $storia, $storiachiaro, $storia, $storiascuro);
+  }
+}
+
+.cattivo {
+  .premio {
+    background-image: linear-gradient(45deg, $cattivoscuro, $cattivo, $cattivochiaro, $cattivo, $cattivoscuro);
   }
 }
 

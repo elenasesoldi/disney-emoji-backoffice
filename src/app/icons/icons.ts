@@ -11,4 +11,5 @@ export class ICONS {
   public static minus = faMinus;
   public static details = faInfo;
   public static check = faCheck;
+  public static edit = faEdit;
 }

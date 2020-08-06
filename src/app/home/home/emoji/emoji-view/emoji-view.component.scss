@@ -137,6 +137,11 @@
     border: 2px solid $storiascuro;
   }
 
+  &.cattivo {
+    background-image: linear-gradient(45deg, $cattivoscuro, $cattivo, $cattivochiaro, $cattivo, $cattivoscuro);
+    border: 2px solid $cattivoscuro;
+  }
+
   &.arcobaleno {
     background-image: linear-gradient(
       45deg,
@@ -199,6 +204,12 @@
 .oro {
   .premio {
     background-image: linear-gradient(45deg, $oroscuro, $oro, $orochiaro, $oro, $oroscuro);
+  }
+}
+
+.cattivo {
+  .premio {
+    background-image: linear-gradient(45deg, $cattivoscuro, $cattivo, $cattivochiaro, $cattivo, $cattivoscuro);
   }
 }
 
