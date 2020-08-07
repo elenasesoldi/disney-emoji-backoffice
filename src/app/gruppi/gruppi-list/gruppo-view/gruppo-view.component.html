@@ -22,7 +22,10 @@
 				</button>
 			</div>
 			<ul class="layout-{{emojiGruppo.length}}">
-				<li *ngFor="let emoji of emojiGruppo">
+				<li
+					*ngFor="let emoji of emojiGruppo"
+					[ngbTooltip]="emoji.emoji?.nome"
+					[tooltipClass]="'scritta2'">
 					<img [src]="emoji.emoji?.immagine">
 					<div class="count">
 						<div

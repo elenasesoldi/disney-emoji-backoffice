@@ -1,7 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { GruppiRoutingModule } from './gruppi-routing.module';
@@ -28,7 +28,8 @@ import { AddEmojiComponent } from './gruppi-list/gruppo-view/add-emoji/add-emoji
     NgbModalModule,
     FontAwesomeModule,
     ScrollingModule,
-    SharedModule
+    SharedModule,
+    NgbTooltipModule
   ]
 })
 export class GruppiModule { }
