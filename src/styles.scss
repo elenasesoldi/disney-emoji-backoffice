@@ -136,6 +136,26 @@ html {
   text-shadow: 1px 1px 0px white, 1px 2px 0px white, 2px 1px 0px white, -1px -1px 0px white, -1px -2px 0px white,
     -2px -1px 0px white, 1px -1px 0px white, 1px -2px 0px white, 2px -1px 0px white, -1px 1px 0px white,
     -1px 2px 0px white, -2px 1px 0px white;
+
+  &.argento {
+    color: invert($argento);
+  }
+
+  &.oro {
+    color: invert($oro);
+  }
+
+  &.storia {
+    color: invert($storia);
+  }
+
+  &.arcobaleno {
+    color: invert($arcobaleno6);
+  }
+
+  &.cattivo {
+    color: invert($cattivo);
+  }
 }
 
 .modal-md {
@@ -294,4 +314,8 @@ body {
 }
 .content {
   margin-top: 200px;
+}
+
+.z1000 {
+  z-index: 1000;
 }

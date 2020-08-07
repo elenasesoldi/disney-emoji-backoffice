@@ -182,3 +182,28 @@ ul {
 .scrollingwrapper {
   margin: 40px 20px;
 }
+
+.scatole-container {
+  width: min-content;
+  display: flex;
+  margin: auto;
+  img {
+    width: 100px;
+    height: auto;
+    margin: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #edf8fd;
+    border: solid 2px #384877;
+    border-radius: 30px;
+    &:hover {
+      background: darken(#edf8fd, 10%);
+    }
+
+    &.selezionata {
+      background: #c6cef5;
+      border: solid 6px #5b75d6;
+      padding: 6px 16px;
+    }
+  }
+}

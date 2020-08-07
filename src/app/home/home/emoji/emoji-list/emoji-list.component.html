@@ -1,4 +1,14 @@
 <div class="main">
+	<div class="scatole-container">
+		<img
+			*ngFor="let s of scatole"
+			[src]="s.immagine"
+			alt="scatola {{s.nome}}"
+			ngbTooltip="{{s.nome}}"
+			tooltipClass="scritta"
+			(click)="scatola = s.nome"
+			[class.selezionata]="scatola == s.nome">
+	</div>
 	<div class="button-container">
 		<button
 			type="button"
@@ -12,359 +22,643 @@
 		class="list-container"
 		*ngIf="emoji.length">
 		<!-- EMOJI ARGENTO -->
-		<h1
-			class="scritta argento"
-			style="text-align: center;">
-			Emoji Argento
-		</h1>
-		<ul
-			[style.column-count]="12"
-			class="scrollingwrapper">
+		<ng-template [ngIf]="scatola == 'argento'">
+			<h1
+				class="scritta argento"
+				style="text-align: center;">
+				Emoji Argento
+				<small>
+					{{statistiche.argento?.ottenute}} / {{statistiche.argento?.totali}}
+				</small>
+			</h1>
+			<ul
+				[style.column-count]="12"
+				class="scrollingwrapper">
 
-			<li *ngFor="let e of emojiArgento">
-				<div
-					class="img-border argento"
-					[class.selezionato]="e.id == selezionata?.id">
+				<li *ngFor="let e of emojiArgento">
 					<div
-						class="img-container"
+						class="img-border argento"
 						[class.selezionato]="e.id == selezionata?.id">
 						<div
-							class="premio"
-							*ngIf="e.premiogruppo">
-							<fa-icon
-								[icon]="smile"
-								class="white"></fa-icon>
+							class="img-container"
+							[class.selezionato]="e.id == selezionata?.id">
+							<div
+								class="premio"
+								*ngIf="e.premiogruppo">
+								<fa-icon
+									[icon]="smile"
+									class="white"></fa-icon>
+
+							</div>
+							<div
+								class="premio"
+								*ngIf="e.solodiamante">
+
+								<fa-icon
+									[icon]="diamond"
+									class="white"></fa-icon>
+							</div>
+							<img
+								[src]="e?.immagine"
+								[class.selezionata]="e.id == selezionata?.id"
+								(click)="selectEmoji(e)"
+								[ngbTooltip]="e?.nome"
+								tooltipClass="scritta2 argento z1000"
+								container="body">
+							<div
+								class="cover-image"
+								[class.display]="!e.count"
+								(click)="selectEmoji(e)"></div>
+							<div
+								class="lock"
+								*ngIf="!e.count">
+
+								<fa-icon
+									[icon]="lock"
+									class="oroscuro"></fa-icon>
+							</div>
+							<div
+								class="lock"
+								*ngIf="e.completa">
+								<fa-icon
+									[icon]="check"
+									class="verde"></fa-icon>
+							</div>
 
 						</div>
-						<div
-							class="premio"
-							*ngIf="e.solodiamante">
-
-							<fa-icon
-								[icon]="diamond"
-								class="white"></fa-icon>
-						</div>
-						<img
-							[src]="e?.immagine"
-							[class.selezionata]="e.id == selezionata?.id"
-							(click)="selectEmoji(e)">
-						<div
-							class="cover-image"
-							[class.display]="!e.count"
-							(click)="selectEmoji(e)"></div>
-						<div
-							class="lock"
-							*ngIf="!e.count">
-
-							<fa-icon
-								[icon]="lock"
-								class="oroscuro"></fa-icon>
-						</div>
-						<div
-							class="lock"
-							*ngIf="e.completa">
-							<fa-icon
-								[icon]="check"
-								class="verde"></fa-icon>
-						</div>
-
 					</div>
-				</div>
 
-			</li>
+				</li>
 
-		</ul>
+			</ul>
+		</ng-template>
+
 		<!-- EMOJI ORO -->
-		<h1
-			class="scritta oro"
-			style="text-align: center;">
-			Emoji Oro
-		</h1>
-		<ul
-			[style.column-count]="12"
-			class="scrollingwrapper">
+		<ng-template [ngIf]="scatola == 'oro'">
+			<h1
+				class="scritta oro"
+				style="text-align: center;">
+				Emoji Oro
+				<small>
+					{{statistiche.oro?.ottenute}} / {{statistiche.oro?.totali}}
+				</small>
+			</h1>
+			<ul
+				[style.column-count]="12"
+				class="scrollingwrapper">
 
-			<li *ngFor="let e of emojiOro">
-				<div
-					class="img-border oro"
-					[class.selezionato]="e.id == selezionata?.id">
+				<li *ngFor="let e of emojiOro">
 					<div
-						class="img-container"
+						class="img-border oro"
 						[class.selezionato]="e.id == selezionata?.id">
 						<div
-							class="premio"
-							*ngIf="e.premiogruppo">
-							<fa-icon
-								[icon]="smile"
-								class="white"></fa-icon>
+							class="img-container"
+							[class.selezionato]="e.id == selezionata?.id">
+							<div
+								class="premio"
+								*ngIf="e.premiogruppo">
+								<fa-icon
+									[icon]="smile"
+									class="white"></fa-icon>
+
+							</div>
+							<div
+								class="premio"
+								*ngIf="e.solodiamante">
+
+								<fa-icon
+									[icon]="diamond"
+									class="white"></fa-icon>
+							</div>
+							<div
+								class="premio serie"
+								*ngIf="e.serie">
+								<div>{{e.serie}}</div>
+
+							</div>
+							<img
+								[src]="e?.immagine"
+								[class.selezionata]="e.id == selezionata?.id"
+								[class.small]="e.imagebig"
+								[class.medium]="e.imagemedium"
+								[class.big]="e.imagesmall"
+								(click)="selectEmoji(e)"
+								[ngbTooltip]="e?.nome"
+								tooltipClass="scritta2 oro z1000"
+								container="body">
+							<div
+								class="cover-image"
+								[class.display]="!e.count"
+								(click)="selectEmoji(e)"></div>
+							<div
+								class="lock"
+								*ngIf="!e.count">
+
+								<fa-icon
+									[icon]="lock"
+									class="oroscuro"></fa-icon>
+							</div>
+							<div
+								class="lock"
+								*ngIf="e.completa">
+								<fa-icon
+									[icon]="check"
+									class="verde"></fa-icon>
+							</div>
 
 						</div>
-						<div
-							class="premio"
-							*ngIf="e.solodiamante">
-
-							<fa-icon
-								[icon]="diamond"
-								class="white"></fa-icon>
-						</div>
-						<div
-							class="premio serie"
-							*ngIf="e.serie">
-							<div>{{e.serie}}</div>
-
-						</div>
-						<img
-							[src]="e?.immagine"
-							[class.selezionata]="e.id == selezionata?.id"
-							[class.small]="e.imagebig"
-							[class.medium]="e.imagemedium"
-							[class.big]="e.imagesmall"
-							(click)="selectEmoji(e)">
-						<div
-							class="cover-image"
-							[class.display]="!e.count"
-							(click)="selectEmoji(e)"></div>
-						<div
-							class="lock"
-							*ngIf="!e.count">
-
-							<fa-icon
-								[icon]="lock"
-								class="oroscuro"></fa-icon>
-						</div>
-						<div
-							class="lock"
-							*ngIf="e.completa">
-							<fa-icon
-								[icon]="check"
-								class="verde"></fa-icon>
-						</div>
-
 					</div>
-				</div>
 
-			</li>
+				</li>
 
-		</ul>
+			</ul>
+		</ng-template>
+
+		<!-- EMOJI SERIE I -->
+		<ng-template [ngIf]="scatola == 'serieI'">
+			<h1
+				class="scritta oro"
+				style="text-align: center;">
+				Emoji Serie I
+				<small>
+					{{statistiche.seriei?.ottenute}} / {{statistiche.seriei?.totali}}
+				</small>
+			</h1>
+			<ul
+				[style.column-count]="12"
+				class="scrollingwrapper">
+
+				<li *ngFor="let e of emojiSerieI">
+					<div
+						class="img-border oro"
+						[class.selezionato]="e.id == selezionata?.id">
+						<div
+							class="img-container"
+							[class.selezionato]="e.id == selezionata?.id">
+							<div
+								class="premio"
+								*ngIf="e.premiogruppo">
+								<fa-icon
+									[icon]="smile"
+									class="white"></fa-icon>
+
+							</div>
+							<div
+								class="premio"
+								*ngIf="e.solodiamante">
+
+								<fa-icon
+									[icon]="diamond"
+									class="white"></fa-icon>
+							</div>
+							<div
+								class="premio serie"
+								*ngIf="e.serie">
+								<div>{{e.serie}}</div>
+
+							</div>
+							<img
+								[src]="e?.immagine"
+								[class.selezionata]="e.id == selezionata?.id"
+								[class.small]="e.imagebig"
+								[class.medium]="e.imagemedium"
+								[class.big]="e.imagesmall"
+								(click)="selectEmoji(e)"
+								[ngbTooltip]="e?.nome"
+								tooltipClass="scritta2 oro z1000"
+								container="body">
+							<div
+								class="cover-image"
+								[class.display]="!e.count"
+								(click)="selectEmoji(e)"></div>
+							<div
+								class="lock"
+								*ngIf="!e.count">
+
+								<fa-icon
+									[icon]="lock"
+									class="oroscuro"></fa-icon>
+							</div>
+							<div
+								class="lock"
+								*ngIf="e.completa">
+								<fa-icon
+									[icon]="check"
+									class="verde"></fa-icon>
+							</div>
+
+						</div>
+					</div>
+
+				</li>
+
+			</ul>
+		</ng-template>
+
+		<!-- EMOJI SERIE II -->
+		<ng-template [ngIf]="scatola == 'serieII'">
+			<h1
+				class="scritta oro"
+				style="text-align: center;">
+				Emoji Serie II
+				<small>
+					{{statistiche.serieii?.ottenute}} / {{statistiche.serieii?.totali}}
+				</small>
+			</h1>
+			<ul
+				[style.column-count]="12"
+				class="scrollingwrapper">
+
+				<li *ngFor="let e of emojiSerieII">
+					<div
+						class="img-border oro"
+						[class.selezionato]="e.id == selezionata?.id">
+						<div
+							class="img-container"
+							[class.selezionato]="e.id == selezionata?.id">
+							<div
+								class="premio"
+								*ngIf="e.premiogruppo">
+								<fa-icon
+									[icon]="smile"
+									class="white"></fa-icon>
+
+							</div>
+							<div
+								class="premio"
+								*ngIf="e.solodiamante">
+
+								<fa-icon
+									[icon]="diamond"
+									class="white"></fa-icon>
+							</div>
+							<div
+								class="premio serie"
+								*ngIf="e.serie">
+								<div>{{e.serie}}</div>
+
+							</div>
+							<img
+								[src]="e?.immagine"
+								[class.selezionata]="e.id == selezionata?.id"
+								[class.small]="e.imagebig"
+								[class.medium]="e.imagemedium"
+								[class.big]="e.imagesmall"
+								(click)="selectEmoji(e)"
+								[ngbTooltip]="e?.nome"
+								tooltipClass="scritta2 oro z1000"
+								container="body">
+							<div
+								class="cover-image"
+								[class.display]="!e.count"
+								(click)="selectEmoji(e)"></div>
+							<div
+								class="lock"
+								*ngIf="!e.count">
+
+								<fa-icon
+									[icon]="lock"
+									class="oroscuro"></fa-icon>
+							</div>
+							<div
+								class="lock"
+								*ngIf="e.completa">
+								<fa-icon
+									[icon]="check"
+									class="verde"></fa-icon>
+							</div>
+
+						</div>
+					</div>
+
+				</li>
+
+			</ul>
+		</ng-template>
+
+		<!-- EMOJI SERIE III -->
+		<ng-template [ngIf]="scatola == 'serieIII'">
+			<h1
+				class="scritta oro"
+				style="text-align: center;">
+				Emoji Serie III
+				<small>
+					{{statistiche.serieiii?.ottenute}} / {{statistiche.serieiii?.totali}}
+				</small>
+			</h1>
+			<ul
+				[style.column-count]="12"
+				class="scrollingwrapper">
+
+				<li *ngFor="let e of emojiSerieIII">
+					<div
+						class="img-border oro"
+						[class.selezionato]="e.id == selezionata?.id">
+						<div
+							class="img-container"
+							[class.selezionato]="e.id == selezionata?.id">
+							<div
+								class="premio"
+								*ngIf="e.premiogruppo">
+								<fa-icon
+									[icon]="smile"
+									class="white"></fa-icon>
+
+							</div>
+							<div
+								class="premio"
+								*ngIf="e.solodiamante">
+
+								<fa-icon
+									[icon]="diamond"
+									class="white"></fa-icon>
+							</div>
+							<div
+								class="premio serie"
+								*ngIf="e.serie">
+								<div>{{e.serie}}</div>
+
+							</div>
+							<img
+								[src]="e?.immagine"
+								[class.selezionata]="e.id == selezionata?.id"
+								[class.small]="e.imagebig"
+								[class.medium]="e.imagemedium"
+								[class.big]="e.imagesmall"
+								(click)="selectEmoji(e)"
+								[ngbTooltip]="e?.nome"
+								tooltipClass="scritta2 oro z1000"
+								container="body">
+							<div
+								class="cover-image"
+								[class.display]="!e.count"
+								(click)="selectEmoji(e)"></div>
+							<div
+								class="lock"
+								*ngIf="!e.count">
+
+								<fa-icon
+									[icon]="lock"
+									class="oroscuro"></fa-icon>
+							</div>
+							<div
+								class="lock"
+								*ngIf="e.completa">
+								<fa-icon
+									[icon]="check"
+									class="verde"></fa-icon>
+							</div>
+
+						</div>
+					</div>
+
+				</li>
+
+			</ul>
+		</ng-template>
 
 		<!-- EMOJI STORIA -->
-		<h1
-			class="scritta storia"
-			style="text-align: center;">
-			Emoji Storia
-		</h1>
-		<ul
-			[style.column-count]="12"
-			class="scrollingwrapper">
+		<ng-template [ngIf]="scatola == 'storia'">
+			<h1
+				class="scritta storia"
+				style="text-align: center;">
+				Emoji Storia
+				<small>
+					{{statistiche.storia?.ottenute}} / {{statistiche.storia?.totali}}
+				</small>
+			</h1>
+			<ul
+				[style.column-count]="12"
+				class="scrollingwrapper">
 
-			<li *ngFor="let e of emojiStoria">
-				<div
-					class="img-border storia"
-					[class.selezionato]="e.id == selezionata?.id">
+				<li *ngFor="let e of emojiStoria">
 					<div
-						class="img-container"
+						class="img-border storia"
 						[class.selezionato]="e.id == selezionata?.id">
 						<div
-							class="premio"
-							*ngIf="e.premiogruppo">
-							<fa-icon
-								[icon]="smile"
-								class="white"></fa-icon>
+							class="img-container"
+							[class.selezionato]="e.id == selezionata?.id">
+							<div
+								class="premio"
+								*ngIf="e.premiogruppo">
+								<fa-icon
+									[icon]="smile"
+									class="white"></fa-icon>
+
+							</div>
+							<div
+								class="premio"
+								*ngIf="e.solodiamante">
+
+								<fa-icon
+									[icon]="diamond"
+									class="white"></fa-icon>
+							</div>
+							<div
+								class="premio serie"
+								*ngIf="e.serie">
+								<div>{{e.serie}}</div>
+
+							</div>
+							<img
+								[src]="e?.immagine"
+								[class.selezionata]="e.id == selezionata?.id"
+								[class.small]="e.imagebig"
+								[class.medium]="e.imagemedium"
+								[class.big]="e.imagesmall"
+								(click)="selectEmoji(e)"
+								[ngbTooltip]="e?.nome"
+								tooltipClass="scritta2 storia z1000"
+								container="body">
+							<div
+								class="cover-image"
+								[class.display]="!e.count"
+								(click)="selectEmoji(e)"></div>
+							<div
+								class="lock"
+								*ngIf="!e.count">
+
+								<fa-icon
+									[icon]="lock"
+									class="oroscuro"></fa-icon>
+							</div>
+							<div
+								class="lock"
+								*ngIf="e.completa">
+								<fa-icon
+									[icon]="check"
+									class="verde"></fa-icon>
+							</div>
 
 						</div>
-						<div
-							class="premio"
-							*ngIf="e.solodiamante">
-
-							<fa-icon
-								[icon]="diamond"
-								class="white"></fa-icon>
-						</div>
-						<div
-							class="premio serie"
-							*ngIf="e.serie">
-							<div>{{e.serie}}</div>
-
-						</div>
-						<img
-							[src]="e?.immagine"
-							[class.selezionata]="e.id == selezionata?.id"
-							[class.small]="e.imagebig"
-							[class.medium]="e.imagemedium"
-							[class.big]="e.imagesmall"
-							(click)="selectEmoji(e)">
-						<div
-							class="cover-image"
-							[class.display]="!e.count"
-							(click)="selectEmoji(e)"></div>
-						<div
-							class="lock"
-							*ngIf="!e.count">
-
-							<fa-icon
-								[icon]="lock"
-								class="oroscuro"></fa-icon>
-						</div>
-						<div
-							class="lock"
-							*ngIf="e.completa">
-							<fa-icon
-								[icon]="check"
-								class="verde"></fa-icon>
-						</div>
-
 					</div>
-				</div>
 
-			</li>
+				</li>
 
-		</ul>
+			</ul>
+		</ng-template>
 
 		<!-- EMOJI ARCOBALENO -->
-		<h1
-			class="scritta arcobaleno"
-			style="text-align: center;">
-			Emoji Arcobaleno
-		</h1>
-		<ul
-			[style.column-count]="12"
-			class="scrollingwrapper">
+		<ng-template [ngIf]="scatola == 'arcobaleno'">
+			<h1
+				class="scritta arcobaleno"
+				style="text-align: center;">
+				Emoji Arcobaleno
+				<small>
+					{{statistiche.arcobaleno?.ottenute}} / {{statistiche.arcobaleno?.totali}}
+				</small>
+			</h1>
+			<ul
+				[style.column-count]="12"
+				class="scrollingwrapper">
 
-			<li *ngFor="let e of emojiArcobaleno">
-				<div
-					class="img-border arcobaleno"
-					[class.selezionato]="e.id == selezionata?.id">
+				<li *ngFor="let e of emojiArcobaleno">
 					<div
-						class="img-container"
+						class="img-border arcobaleno"
 						[class.selezionato]="e.id == selezionata?.id">
 						<div
-							class="premio"
-							*ngIf="e.premiogruppo">
-							<fa-icon
-								[icon]="smile"
-								class="white"></fa-icon>
+							class="img-container"
+							[class.selezionato]="e.id == selezionata?.id">
+							<div
+								class="premio"
+								*ngIf="e.premiogruppo">
+								<fa-icon
+									[icon]="smile"
+									class="white"></fa-icon>
+
+							</div>
+							<div
+								class="premio"
+								*ngIf="e.solodiamante">
+
+								<fa-icon
+									[icon]="diamond"
+									class="white"></fa-icon>
+							</div>
+							<div
+								class="premio serie"
+								*ngIf="e.serie">
+								<div>{{e.serie}}</div>
+
+							</div>
+							<img
+								[src]="e?.immagine"
+								[class.selezionata]="e.id == selezionata?.id"
+								[class.small]="e.imagebig"
+								[class.medium]="e.imagemedium"
+								[class.big]="e.imagesmall"
+								(click)="selectEmoji(e)"
+								[ngbTooltip]="e?.nome"
+								tooltipClass="scritta2 arcobaleno z1000"
+								container="body">
+							<div
+								class="cover-image"
+								[class.display]="!e.count"
+								(click)="selectEmoji(e)"></div>
+							<div
+								class="lock"
+								*ngIf="!e.count">
+
+								<fa-icon
+									[icon]="lock"
+									class="oroscuro"></fa-icon>
+							</div>
+							<div
+								class="lock"
+								*ngIf="e.completa">
+								<fa-icon
+									[icon]="check"
+									class="verde"></fa-icon>
+							</div>
 
 						</div>
-						<div
-							class="premio"
-							*ngIf="e.solodiamante">
-
-							<fa-icon
-								[icon]="diamond"
-								class="white"></fa-icon>
-						</div>
-						<div
-							class="premio serie"
-							*ngIf="e.serie">
-							<div>{{e.serie}}</div>
-
-						</div>
-						<img
-							[src]="e?.immagine"
-							[class.selezionata]="e.id == selezionata?.id"
-							[class.small]="e.imagebig"
-							[class.medium]="e.imagemedium"
-							[class.big]="e.imagesmall"
-							(click)="selectEmoji(e)">
-						<div
-							class="cover-image"
-							[class.display]="!e.count"
-							(click)="selectEmoji(e)"></div>
-						<div
-							class="lock"
-							*ngIf="!e.count">
-
-							<fa-icon
-								[icon]="lock"
-								class="oroscuro"></fa-icon>
-						</div>
-						<div
-							class="lock"
-							*ngIf="e.completa">
-							<fa-icon
-								[icon]="check"
-								class="verde"></fa-icon>
-						</div>
-
 					</div>
-				</div>
 
-			</li>
+				</li>
 
-		</ul>
+			</ul>
+		</ng-template>
 
 		<!-- EMOJI CATTIVO -->
-		<h1
-			class="scritta cattivo"
-			style="text-align: center;">
-			Emoji Cattivo
-		</h1>
-		<ul
-			[style.column-count]="12"
-			class="scrollingwrapper">
+		<ng-template [ngIf]="scatola == 'cattivo'">
+			<h1
+				class="scritta cattivo"
+				style="text-align: center;">
+				Emoji Cattivo
+				<small>
+					{{statistiche.cattivo?.ottenute}} / {{statistiche.cattivo?.totali}}
+				</small>
+			</h1>
+			<ul
+				[style.column-count]="12"
+				class="scrollingwrapper">
 
-			<li *ngFor="let e of emojiCattivo">
-				<div
-					class="img-border cattivo"
-					[class.selezionato]="e.id == selezionata?.id">
+				<li *ngFor="let e of emojiCattivo">
 					<div
-						class="img-container"
+						class="img-border cattivo"
 						[class.selezionato]="e.id == selezionata?.id">
 						<div
-							class="premio"
-							*ngIf="e.premiogruppo">
-							<fa-icon
-								[icon]="smile"
-								class="white"></fa-icon>
+							class="img-container"
+							[class.selezionato]="e.id == selezionata?.id">
+							<div
+								class="premio"
+								*ngIf="e.premiogruppo">
+								<fa-icon
+									[icon]="smile"
+									class="white"></fa-icon>
+
+							</div>
+							<div
+								class="premio"
+								*ngIf="e.solodiamante">
+
+								<fa-icon
+									[icon]="diamond"
+									class="white"></fa-icon>
+							</div>
+							<div
+								class="premio serie"
+								*ngIf="e.serie">
+								<div>{{e.serie}}</div>
+
+							</div>
+							<img
+								[src]="e?.immagine"
+								[class.selezionata]="e.id == selezionata?.id"
+								[class.small]="e.imagebig"
+								[class.medium]="e.imagemedium"
+								[class.big]="e.imagesmall"
+								(click)="selectEmoji(e)"
+								[ngbTooltip]="e?.nome"
+								tooltipClass="scritta2 cattivo z1000"
+								container="body">
+							<div
+								class="cover-image"
+								[class.display]="!e.count"
+								(click)="selectEmoji(e)"></div>
+							<div
+								class="lock"
+								*ngIf="!e.count">
+
+								<fa-icon
+									[icon]="lock"
+									class="oroscuro"></fa-icon>
+							</div>
+							<div
+								class="lock"
+								*ngIf="e.completa">
+								<fa-icon
+									[icon]="check"
+									class="verde"></fa-icon>
+							</div>
 
 						</div>
-						<div
-							class="premio"
-							*ngIf="e.solodiamante">
-
-							<fa-icon
-								[icon]="diamond"
-								class="white"></fa-icon>
-						</div>
-						<div
-							class="premio serie"
-							*ngIf="e.serie">
-							<div>{{e.serie}}</div>
-
-						</div>
-						<img
-							[src]="e?.immagine"
-							[class.selezionata]="e.id == selezionata?.id"
-							[class.small]="e.imagebig"
-							[class.medium]="e.imagemedium"
-							[class.big]="e.imagesmall"
-							(click)="selectEmoji(e)">
-						<div
-							class="cover-image"
-							[class.display]="!e.count"
-							(click)="selectEmoji(e)"></div>
-						<div
-							class="lock"
-							*ngIf="!e.count">
-
-							<fa-icon
-								[icon]="lock"
-								class="oroscuro"></fa-icon>
-						</div>
-						<div
-							class="lock"
-							*ngIf="e.completa">
-							<fa-icon
-								[icon]="check"
-								class="verde"></fa-icon>
-						</div>
-
 					</div>
-				</div>
 
-			</li>
+				</li>
 
-		</ul>
+			</ul>
+		</ng-template>
 	</div>
 
 	<div class="button-container">

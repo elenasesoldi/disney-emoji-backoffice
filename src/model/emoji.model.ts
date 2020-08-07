@@ -137,3 +137,12 @@ export class Emoji extends Base {
   }
 
 }
+
+export class StatisticheEmoji {
+  totali: number;
+  mancanti: number;
+
+  get ottenute(): number {
+    return this.totali - this.mancanti;
+  }
+}

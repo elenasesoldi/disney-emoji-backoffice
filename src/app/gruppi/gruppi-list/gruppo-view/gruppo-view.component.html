@@ -25,7 +25,7 @@
 				<li
 					*ngFor="let emoji of emojiGruppo"
 					[ngbTooltip]="emoji.emoji?.nome"
-					[tooltipClass]="'scritta2'">
+					[tooltipClass]="'scritta2 ' + emoji.emoji.categoria">
 					<img [src]="emoji.emoji?.immagine">
 					<div class="count">
 						<div

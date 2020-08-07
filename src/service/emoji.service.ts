@@ -57,7 +57,7 @@ export class EmojiService {
     return this.emojiSubject.value.filter(e => e.categoria === categoria);
   }
 
-  prendiEmoji(campo: string, valore: string, categoria?: CategoriaEmoji): Emoji[] {
+  prendiEmoji(campo: string, valore: any, categoria?: CategoriaEmoji): Emoji[] {
     const es = categoria ?
       this.emojiSubject.value.filter(e => (e.categoria === categoria && e[campo] === valore)) :
       this.emojiSubject.value.filter(e => e[campo] === valore);
@@ -65,7 +65,7 @@ export class EmojiService {
     return es;
   }
 
-  contaEmoji(campo: string, valore: string, categoria?: CategoriaEmoji): number {
+  contaEmoji(campo: string, valore: any, categoria?: CategoriaEmoji): number {
 
     const es = categoria ?
       this.emojiSubject.value.filter(e => (e.categoria === categoria && e[campo] === valore)) :
