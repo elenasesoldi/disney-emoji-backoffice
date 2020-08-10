@@ -54,13 +54,13 @@ export class EmojiService {
   }
 
   prendiEmojyByCat(categoria: CategoriaEmoji): Emoji[] {
-    return this.emojiSubject.value.filter(e => e.categoria === categoria);
+    return this.emojiSubject.value.filter(e => e.categoria === categoria).sort((a, b) => a.ordine > b.ordine ? 1 : -1);
   }
 
   prendiEmoji(campo: string, valore: any, categoria?: CategoriaEmoji): Emoji[] {
     const es = categoria ?
-      this.emojiSubject.value.filter(e => (e.categoria === categoria && e[campo] === valore)) :
-      this.emojiSubject.value.filter(e => e[campo] === valore);
+      this.emojiSubject.value.filter(e => (e.categoria === categoria && e[campo] === valore)).sort((a, b) => a.ordine > b.ordine ? 1 : -1) :
+      this.emojiSubject.value.filter(e => e[campo] === valore).sort((a, b) => a.ordine > b.ordine ? 1 : -1);
 
     return es;
   }

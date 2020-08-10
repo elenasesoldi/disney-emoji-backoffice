@@ -31,9 +31,11 @@
 					{{statistiche.argento?.ottenute}} / {{statistiche.argento?.totali}}
 				</small>
 			</h1>
+			<app-emoji-statistiche [statistiche]="statistiche.argento"></app-emoji-statistiche>
 			<ul
 				[style.column-count]="12"
-				class="scrollingwrapper">
+				class="scrollingwrapper"
+				*ngIf="!ordinaemoji">
 
 				<li *ngFor="let e of emojiArgento">
 					<div
@@ -91,6 +93,20 @@
 				</li>
 
 			</ul>
+			<ul
+				*ngIf="ordinaemoji"
+				class="ordina"
+				cdkDropList
+				(cdkDropListDropped)="drop($event, emojiArgento)">
+				<li
+					*ngFor="let e of emojiArgento"
+					cdkDrag>
+					<span>{{e.ordine}}.</span>
+					<img [src]="e.immagine">
+					<span>{{e.nome}}</span>
+
+				</li>
+			</ul>
 		</ng-template>
 
 		<!-- EMOJI ORO -->
@@ -103,7 +119,9 @@
 					{{statistiche.oro?.ottenute}} / {{statistiche.oro?.totali}}
 				</small>
 			</h1>
+			<app-emoji-statistiche [statistiche]="statistiche.oro"></app-emoji-statistiche>
 			<ul
+				*ngIf="!ordinaemoji"
 				[style.column-count]="12"
 				class="scrollingwrapper">
 
@@ -172,6 +190,20 @@
 				</li>
 
 			</ul>
+			<ul
+				*ngIf="ordinaemoji"
+				class="ordina"
+				cdkDropList
+				(cdkDropListDropped)="drop($event, emojiOro)">
+				<li
+					*ngFor="let e of emojiOro"
+					cdkDrag>
+					<span>{{e.ordine}}.</span>
+					<img [src]="e.immagine">
+					<span>{{e.nome}}</span>
+
+				</li>
+			</ul>
 		</ng-template>
 
 		<!-- EMOJI SERIE I -->
@@ -184,6 +216,7 @@
 					{{statistiche.seriei?.ottenute}} / {{statistiche.seriei?.totali}}
 				</small>
 			</h1>
+			<app-emoji-statistiche [statistiche]="statistiche.seriei"></app-emoji-statistiche>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -265,6 +298,7 @@
 					{{statistiche.serieii?.ottenute}} / {{statistiche.serieii?.totali}}
 				</small>
 			</h1>
+			<app-emoji-statistiche [statistiche]="statistiche.serieii"></app-emoji-statistiche>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -346,6 +380,7 @@
 					{{statistiche.serieiii?.ottenute}} / {{statistiche.serieiii?.totali}}
 				</small>
 			</h1>
+			<app-emoji-statistiche [statistiche]="statistiche.serieiii"></app-emoji-statistiche>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -427,6 +462,7 @@
 					{{statistiche.storia?.ottenute}} / {{statistiche.storia?.totali}}
 				</small>
 			</h1>
+			<app-emoji-statistiche [statistiche]="statistiche.storia"></app-emoji-statistiche>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -508,6 +544,7 @@
 					{{statistiche.arcobaleno?.ottenute}} / {{statistiche.arcobaleno?.totali}}
 				</small>
 			</h1>
+			<app-emoji-statistiche [statistiche]="statistiche.arcobaleno"></app-emoji-statistiche>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -589,6 +626,7 @@
 					{{statistiche.cattivo?.ottenute}} / {{statistiche.cattivo?.totali}}
 				</small>
 			</h1>
+			<app-emoji-statistiche [statistiche]="statistiche.cattivo"></app-emoji-statistiche>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -667,6 +705,27 @@
 			class="btn primary"
 			(click)="aggiungi()">
 			Aggiungi Emoji
+		</button>
+		<button
+			type="button"
+			class="btn secondary"
+			*ngIf="!ordinaemoji"
+			(click)="ordinaemoji = true">
+			Ordina Emoji
+		</button>
+		<button
+			type="button"
+			class="btn secondary"
+			*ngIf="ordinaemoji"
+			(click)="ordinaemoji = false">
+			Indietro
+		</button>
+		<button
+			type="button"
+			class="btn secondary"
+			*ngIf="ordinaemoji"
+			(click)="salvaOrdine()">
+			Salva
 		</button>
 	</div>
 </div>

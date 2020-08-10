@@ -1,0 +1,89 @@
+<div class="progresso">
+	<div class="scritta">Progresso :</div>
+	<div class="barra-progresso">
+		<div class="out">
+			<div
+				class="in"
+				[style.width]="perc + '%'"></div>
+			<div class="scritta">
+				<span>
+					{{progresso}}/{{totale}}
+					<small>( {{perc | number:"1.2-2"}}% )</small>
+				</span>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<div class="dati">
+	<div>
+		<span class="scritta">Punteggio medio:</span>
+		<span class="scritta2">{{punteggiomedio | number:"1.2-2"}}</span>
+	</div>
+	<div>
+		<span class="scritta">Punteggio massimo:</span>
+		<span class="scritta2">{{punteggiomassimo}}</span>
+	</div>
+	<div>
+		<span class="scritta">Punteggio minimo:</span>
+		<span class="scritta2">{{punteggiominimo}}</span>
+	</div>
+</div>
+<div class="dati">
+	<table class="tabella livelli">
+		<tbody>
+			<tr>
+				<th class="scritta2">Livello</th>
+				<th class="scritta2">
+					Emoji
+					<fa-icon
+						[icon]="tabellacompleta ? mostra : nascondi"
+						(click)="tabellacompleta = !tabellacompleta"></fa-icon>
+				</th>
+			</tr>
+			<tr
+				*ngFor="let l of Object.keys(livelli)"
+				class="scritta">
+				<td>{{l}}</td>
+				<td *ngIf="!tabellacompleta">{{livelli[l].length}}</td>
+				<td *ngIf="tabellacompleta">
+					<img
+						*ngFor="let e of livelli[l]"
+						[src]="e.immagine"
+						(click)="selectEmoji(e)"
+						[ngbTooltip]="e?.nome">
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+	<table class="tabella count">
+		<tbody>
+			<tr>
+				<th class="scritta2">Count</th>
+				<th class="scritta2">
+					Emoji
+					<fa-icon
+						[icon]="tabellacompleta ? mostra : nascondi"
+						(click)="tabellacompleta = !tabellacompleta"></fa-icon>
+				</th>
+			</tr>
+			<tr
+				*ngFor="let c of Object.keys(count)"
+				class="scritta">
+				<td>{{c}}</td>
+				<td *ngIf="!tabellacompleta">{{count[c].length}}</td>
+				<td *ngIf="tabellacompleta">
+					<img
+						*ngFor="let e of count[c]"
+						[src]="e.immagine"
+						(click)="selectEmoji(e)"
+						[ngbTooltip]="e?.nome">
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+
+</div>

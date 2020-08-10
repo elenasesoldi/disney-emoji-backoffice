@@ -136,13 +136,20 @@ export class Emoji extends Base {
     return this.count === this.countMassimo;
   }
 
+  get punteggio(): number {
+    return this.punti ? this.punti : 0;
+  }
+
 }
 
 export class StatisticheEmoji {
+  categoria: CategoriaEmoji;
+  serie: SerieEmoji;
   totali: number;
   mancanti: number;
 
   get ottenute(): number {
     return this.totali - this.mancanti;
   }
+
 }

@@ -1,0 +1,68 @@
+.progresso {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+
+  .scritta {
+    width: 20%;
+    text-align: center;
+    font-size: x-large;
+    height: min-content;
+    margin: auto;
+  }
+  .barra-progresso {
+    width: 80%;
+    .out {
+      width: 80%;
+      height: 100%;
+      margin: auto;
+      border-radius: 50px;
+      border: solid 2px white;
+      background-image: radial-gradient(#7a4a9e, #4f237a);
+      position: relative;
+
+      .in {
+        height: 100%;
+        background-image: linear-gradient(#f3d455, #f48c43);
+        border-radius: 50px;
+      }
+      .scritta {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        span {
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+
+.dati {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  > div {
+    width: 25%;
+
+    span {
+      margin-left: 3%;
+      &:first-child {
+        margin-left: 10%;
+      }
+    }
+  }
+
+  .tabella {
+    img {
+      height: 30px;
+      width: auto;
+      margin: 0 2px;
+    }
+  }
+}

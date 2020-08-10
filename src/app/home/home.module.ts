@@ -11,6 +11,8 @@ import { EmojiListComponent } from './home/emoji/emoji-list/emoji-list.component
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { HeaderComponent } from '../header/header.component';
 import { SharedModule } from '../shared/shared.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { EmojiStatisticheComponent } from './home/emoji/emoji-list/emoji-statistiche/emoji-statistiche.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     EmojiListComponent,
     EmojiViewComponent,
     HomeComponent,
+    EmojiStatisticheComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +30,8 @@ import { SharedModule } from '../shared/shared.module';
     FontAwesomeModule,
     ScrollingModule,
     SharedModule,
-    NgbTooltipModule
+    NgbTooltipModule,
+    DragDropModule
   ]
 })
 export class HomeModule { }

@@ -1,9 +1,7 @@
 <ng-template [ngIf]="emoji">
 	<div class="modal-header">
-		<div>
-			<h1
-				class="scritta"
-				*ngIf="!emoji.count">
+		<div *ngIf="!emoji.count">
+			<h1 class="scritta">
 				<fa-icon
 					[icon]="lock"
 					class="oroscuro"></fa-icon>
