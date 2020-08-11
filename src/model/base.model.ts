@@ -12,3 +12,7 @@ export class Base {
     this.datamodifica = new Date().getTime();
   }
 }
+
+export enum Ordine {
+  CRESCENTE = 'crescente', DECRESCENTE = 'decrescente'
+}

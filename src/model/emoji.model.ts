@@ -15,18 +15,6 @@ export enum SerieEmoji {
 
 export class Emoji extends Base {
 
-  nome: string;
-  categoria: CategoriaEmoji;
-  livello: number;
-  punti: number;
-  count: number;
-  serie: SerieEmoji;
-  immagine: string;
-  descrizione: string;
-  premiogruppo: boolean;
-  solodiamante: boolean;
-  comeottenerla: string;
-
   constructor(nome?: string) {
     super();
     this.nome = nome;
@@ -138,6 +126,28 @@ export class Emoji extends Base {
 
   get punteggio(): number {
     return this.punti ? this.punti : 0;
+  }
+
+  get LIVELLO(): number {
+    return this.livello ? this.livello : 0;
+  }
+
+
+
+
+  nome: string;
+  categoria: CategoriaEmoji;
+  livello: number;
+  punti: number;
+  count: number;
+  serie: SerieEmoji;
+  immagine: string;
+  descrizione: string;
+  premiogruppo: boolean;
+  solodiamante: boolean;
+  comeottenerla: string;
+  static keys() {
+    return ['ordine', 'nome', 'LIVELLO', 'punteggio', 'count'];
   }
 
 }

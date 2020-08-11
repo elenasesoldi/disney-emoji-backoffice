@@ -32,6 +32,40 @@
 				</small>
 			</h1>
 			<app-emoji-statistiche [statistiche]="statistiche.argento"></app-emoji-statistiche>
+			<div
+				class="ordina emoji"
+				*ngIf="!ordinaemoji">
+				<div>
+					<label class="scritta">Ordina per:</label>
+					<select
+						[(ngModel)]="campo"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let c of campi"
+							value="{{c}}">
+							{{c | lowercase}}
+						</option>
+					</select>
+				</div>
+				<div>
+					<label class="scritta">in senso:</label>
+					<select
+						[(ngModel)]="ordine"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let o of ordini"
+							value="{{o}}">
+							{{o}}
+						</option>
+					</select>
+				</div>
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper"
@@ -64,7 +98,7 @@
 								[src]="e?.immagine"
 								[class.selezionata]="e.id == selezionata?.id"
 								(click)="selectEmoji(e)"
-								[ngbTooltip]="e?.nome"
+								[ngbTooltip]="e?.nome + (campo ? (' (' + e[campo] + ')') : '')"
 								tooltipClass="scritta2 argento z1000"
 								container="body">
 							<div
@@ -120,6 +154,40 @@
 				</small>
 			</h1>
 			<app-emoji-statistiche [statistiche]="statistiche.oro"></app-emoji-statistiche>
+			<div
+				class="ordina emoji"
+				*ngIf="!ordinaemoji">
+				<div>
+					<label class="scritta">Ordina per:</label>
+					<select
+						[(ngModel)]="campo"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let c of campi"
+							value="{{c}}">
+							{{c | lowercase}}
+						</option>
+					</select>
+				</div>
+				<div>
+					<label class="scritta">in senso:</label>
+					<select
+						[(ngModel)]="ordine"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let o of ordini"
+							value="{{o}}">
+							{{o}}
+						</option>
+					</select>
+				</div>
+			</div>
 			<ul
 				*ngIf="!ordinaemoji"
 				[style.column-count]="12"
@@ -161,7 +229,7 @@
 								[class.medium]="e.imagemedium"
 								[class.big]="e.imagesmall"
 								(click)="selectEmoji(e)"
-								[ngbTooltip]="e?.nome"
+								[ngbTooltip]="e?.nome + (campo ? (' (' + e[campo] + ')') : '')"
 								tooltipClass="scritta2 oro z1000"
 								container="body">
 							<div
@@ -217,6 +285,40 @@
 				</small>
 			</h1>
 			<app-emoji-statistiche [statistiche]="statistiche.seriei"></app-emoji-statistiche>
+			<div
+				class="ordina emoji"
+				*ngIf="!ordinaemoji">
+				<div>
+					<label class="scritta">Ordina per:</label>
+					<select
+						[(ngModel)]="campo"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let c of campi"
+							value="{{c}}">
+							{{ c | lowercase}}
+						</option>
+					</select>
+				</div>
+				<div>
+					<label class="scritta">in senso:</label>
+					<select
+						[(ngModel)]="ordine"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let o of ordini"
+							value="{{o}}">
+							{{o}}
+						</option>
+					</select>
+				</div>
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -257,7 +359,7 @@
 								[class.medium]="e.imagemedium"
 								[class.big]="e.imagesmall"
 								(click)="selectEmoji(e)"
-								[ngbTooltip]="e?.nome"
+								[ngbTooltip]="e?.nome + (campo ? (' (' + e[campo] + ')') : '')"
 								tooltipClass="scritta2 oro z1000"
 								container="body">
 							<div
@@ -299,6 +401,40 @@
 				</small>
 			</h1>
 			<app-emoji-statistiche [statistiche]="statistiche.serieii"></app-emoji-statistiche>
+			<div
+				class="ordina emoji"
+				*ngIf="!ordinaemoji">
+				<div>
+					<label class="scritta">Ordina per:</label>
+					<select
+						[(ngModel)]="campo"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let c of campi"
+							value="{{c}}">
+							{{c | lowercase}}
+						</option>
+					</select>
+				</div>
+				<div>
+					<label class="scritta">in senso:</label>
+					<select
+						[(ngModel)]="ordine"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let o of ordini"
+							value="{{o}}">
+							{{o}}
+						</option>
+					</select>
+				</div>
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -339,7 +475,7 @@
 								[class.medium]="e.imagemedium"
 								[class.big]="e.imagesmall"
 								(click)="selectEmoji(e)"
-								[ngbTooltip]="e?.nome"
+								[ngbTooltip]="e?.nome + (campo ? (' (' + e[campo] + ')') : '')"
 								tooltipClass="scritta2 oro z1000"
 								container="body">
 							<div
@@ -381,6 +517,40 @@
 				</small>
 			</h1>
 			<app-emoji-statistiche [statistiche]="statistiche.serieiii"></app-emoji-statistiche>
+			<div
+				class="ordina emoji"
+				*ngIf="!ordinaemoji">
+				<div>
+					<label class="scritta">Ordina per:</label>
+					<select
+						[(ngModel)]="campo"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let c of campi"
+							value="{{c}}">
+							{{c | lowercase}}
+						</option>
+					</select>
+				</div>
+				<div>
+					<label class="scritta">in senso:</label>
+					<select
+						[(ngModel)]="ordine"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let o of ordini"
+							value="{{o}}">
+							{{o}}
+						</option>
+					</select>
+				</div>
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -421,7 +591,7 @@
 								[class.medium]="e.imagemedium"
 								[class.big]="e.imagesmall"
 								(click)="selectEmoji(e)"
-								[ngbTooltip]="e?.nome"
+								[ngbTooltip]="e?.nome + (campo ? (' (' + e[campo] + ')') : '')"
 								tooltipClass="scritta2 oro z1000"
 								container="body">
 							<div
@@ -463,6 +633,40 @@
 				</small>
 			</h1>
 			<app-emoji-statistiche [statistiche]="statistiche.storia"></app-emoji-statistiche>
+			<div
+				class="ordina emoji"
+				*ngIf="!ordinaemoji">
+				<div>
+					<label class="scritta">Ordina per:</label>
+					<select
+						[(ngModel)]="campo"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let c of campi"
+							value="{{c}}">
+							{{c | lowercase}}
+						</option>
+					</select>
+				</div>
+				<div>
+					<label class="scritta">in senso:</label>
+					<select
+						[(ngModel)]="ordine"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let o of ordini"
+							value="{{o}}">
+							{{o}}
+						</option>
+					</select>
+				</div>
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -503,7 +707,7 @@
 								[class.medium]="e.imagemedium"
 								[class.big]="e.imagesmall"
 								(click)="selectEmoji(e)"
-								[ngbTooltip]="e?.nome"
+								[ngbTooltip]="e?.nome + (campo ? (' (' + e[campo] + ')') : '')"
 								tooltipClass="scritta2 storia z1000"
 								container="body">
 							<div
@@ -545,6 +749,40 @@
 				</small>
 			</h1>
 			<app-emoji-statistiche [statistiche]="statistiche.arcobaleno"></app-emoji-statistiche>
+			<div
+				class="ordina emoji"
+				*ngIf="!ordinaemoji">
+				<div>
+					<label class="scritta">Ordina per:</label>
+					<select
+						[(ngModel)]="campo"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let c of campi"
+							value="{{c}}">
+							{{c | lowercase}}
+						</option>
+					</select>
+				</div>
+				<div>
+					<label class="scritta">in senso:</label>
+					<select
+						[(ngModel)]="ordine"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let o of ordini"
+							value="{{o}}">
+							{{o}}
+						</option>
+					</select>
+				</div>
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -585,7 +823,7 @@
 								[class.medium]="e.imagemedium"
 								[class.big]="e.imagesmall"
 								(click)="selectEmoji(e)"
-								[ngbTooltip]="e?.nome"
+								[ngbTooltip]="e?.nome + (campo ? (' (' + e[campo] + ')') : '')"
 								tooltipClass="scritta2 arcobaleno z1000"
 								container="body">
 							<div
@@ -627,6 +865,40 @@
 				</small>
 			</h1>
 			<app-emoji-statistiche [statistiche]="statistiche.cattivo"></app-emoji-statistiche>
+			<div
+				class="ordina emoji"
+				*ngIf="!ordinaemoji">
+				<div>
+					<label class="scritta">Ordina per:</label>
+					<select
+						[(ngModel)]="campo"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let c of campi"
+							value="{{c}}">
+							{{c | lowercase}}
+						</option>
+					</select>
+				</div>
+				<div>
+					<label class="scritta">in senso:</label>
+					<select
+						[(ngModel)]="ordine"
+						class="form-control"
+						placeholder="ordine"
+						(ngModelChange)="ordina()"
+						required>
+						<option
+							*ngFor="let o of ordini"
+							value="{{o}}">
+							{{o}}
+						</option>
+					</select>
+				</div>
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
@@ -667,7 +939,7 @@
 								[class.medium]="e.imagemedium"
 								[class.big]="e.imagesmall"
 								(click)="selectEmoji(e)"
-								[ngbTooltip]="e?.nome"
+								[ngbTooltip]="e?.nome + (campo ? (' (' + e[campo] + ')') : '')"
 								tooltipClass="scritta2 cattivo z1000"
 								container="body">
 							<div
@@ -709,8 +981,8 @@
 		<button
 			type="button"
 			class="btn secondary"
-			*ngIf="!ordinaemoji"
-			(click)="ordinaemoji = true">
+			*ngIf="(scatola == 'argento' || scatola == 'oro' ) && !ordinaemoji"
+			(click)="ordinaEmoji()">
 			Ordina Emoji
 		</button>
 		<button

@@ -7,6 +7,7 @@ import { EmojiViewComponent } from '../emoji-view/emoji-view.component';
 import { scatole } from '../../../../icons/scatole';
 import { EmojiService } from '../../../../../service/emoji.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Ordine } from '../../../../../model/base.model';
 
 
 @Component({
@@ -51,7 +52,14 @@ export class EmojiListComponent implements OnInit {
     cattivo: new StatisticheEmoji()
   };
 
-  constructor(private modalService: NgbModal, private emojiService: EmojiService) { }
+  campi = Emoji.keys();
+  campo = 'ordine';
+  ordini = Object.keys(Ordine).map(o => Ordine[o]);
+  ordine = Ordine.CRESCENTE;
+
+  constructor(private modalService: NgbModal, private emojiService: EmojiService) {
+    console.log(this.campi);
+  }
 
   ngOnInit() {
     this.emojiArgento = this.emojiService.prendiEmojyByCat(CategoriaEmoji.ARGENTO);
@@ -145,6 +153,13 @@ export class EmojiListComponent implements OnInit {
 
   }
 
+  ordinaEmoji(): void {
+    this.campo = 'ordine';
+    this.ordine = Ordine.CRESCENTE;
+    this.ordina();
+    this.ordinaemoji = true;
+  }
+
   salvaOrdine(): void {
     let listaEmoji: Emoji[];
     switch (this.scatola) {
@@ -157,18 +172,38 @@ export class EmojiListComponent implements OnInit {
     }
 
     const t = listaEmoji.length;
-    this.salvaprogressi = true;
+
     for (let e = 0; e < t; e++) {
       const emoji = listaEmoji[e];
       emoji.ordine = e + 1;
-      emoji.update();
       this.emojiService.modificaEmoji(emoji);
       console.log(Math.floor(e / t * 100) + '%');
-
     }
 
 
     this.ordinaemoji = false;
   }
+
+  ordina(): void {
+
+    this.emojiArgento = this.emojiService.prendiEmojyByCat(CategoriaEmoji.ARGENTO, this.campo, this.ordine);
+
+    this.emojiOro = this.emojiService.prendiEmojyByCat(CategoriaEmoji.ORO, this.campo, this.ordine);
+
+    this.emojiSerieI = this.emojiService.prendiEmoji('serie', SerieEmoji.I, CategoriaEmoji.ORO, this.campo, this.ordine);
+
+    this.emojiSerieII = this.emojiService.prendiEmoji('serie', SerieEmoji.II, CategoriaEmoji.ORO, this.campo, this.ordine);
+
+    this.emojiSerieIII = this.emojiService.prendiEmoji('serie', SerieEmoji.III, CategoriaEmoji.ORO, this.campo, this.ordine);
+
+    this.emojiStoria = this.emojiService.prendiEmojyByCat(CategoriaEmoji.STORIA, this.campo, this.ordine);
+
+    this.emojiArcobaleno = this.emojiService.prendiEmojyByCat(CategoriaEmoji.ARCOBALENO, this.campo, this.ordine);
+
+    this.emojiCattivo = this.emojiService.prendiEmojyByCat(CategoriaEmoji.CATTIVO, this.campo, this.ordine);
+
+  }
+
+
 
 }
