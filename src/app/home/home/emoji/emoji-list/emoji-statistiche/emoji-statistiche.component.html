@@ -55,6 +55,10 @@
 						[ngbTooltip]="e?.nome">
 				</td>
 			</tr>
+			<tr class="scritta">
+				<td>Media</td>
+				<td>{{medialivelli | number:"1.2-2"}}</td>
+			</tr>
 
 		</tbody>
 	</table>
@@ -81,6 +85,10 @@
 						(click)="selectEmoji(e)"
 						[ngbTooltip]="e?.nome">
 				</td>
+			</tr>
+			<tr class="scritta">
+				<td>Media</td>
+				<td>{{mediacount | number:"1.2-2"}}</td>
 			</tr>
 
 		</tbody>

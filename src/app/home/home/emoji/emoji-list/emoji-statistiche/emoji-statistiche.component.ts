@@ -35,6 +35,24 @@ export class EmojiStatisticheComponent implements OnInit {
     return this.progresso / this.totale * 100;
   }
 
+  get medialivelli(): number {
+    let m = 0;
+    for (const l of Object.keys(this.livelli)) {
+      m += +l * this.livelli[l].length;
+    }
+
+    return m / this.statistiche.totali;
+  }
+
+  get mediacount(): number {
+    let m = 0;
+    for (const l of Object.keys(this.count)) {
+      m += +l * this.count[l].length;
+    }
+
+    return m / this.statistiche.totali;
+  }
+
   constructor(
     private emojiService: EmojiService,
     private modalService: NgbModal

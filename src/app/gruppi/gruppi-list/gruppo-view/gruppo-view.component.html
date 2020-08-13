@@ -89,11 +89,15 @@
 		[ngStyle]="{'opacity': gruppo.emojipremio ? 1 : 0}"
 		class="emoji-premio">
 		<p>
-			Ottieni tutte le Emoji doppie di {{gruppo.nome}} per vincere
+			Ottieni tutte le Emoji doppie di
+			<i>{{gruppo.nome}}</i>
+			per vincere
 			<span *ngIf="emojipremio">
 				<img
-					[src]="emojipremio.immagine"
-					class="piccola-emoji">
+					[src]="emojipremio?.immagine"
+					class="piccola-emoji"
+					[ngbTooltip]="emojipremio?.nome"
+					[tooltipClass]="'scritta2 ' + emojipremio?.categoria">
 			</span>
 
 		</p>
