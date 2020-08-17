@@ -26,6 +26,7 @@ export class EmojiStatisticheComponent implements OnInit {
   // tabelle
   livelli = {};
   count = {};
+  punti = {};
   Object = Object;
   tabellacompleta = false;
   mostra = ICONS.mostra;
@@ -53,6 +54,17 @@ export class EmojiStatisticheComponent implements OnInit {
     return m / this.statistiche.totali;
   }
 
+  get mediapunti(): number {
+    let m = 0;
+    for (const l of Object.keys(this.punti)) {
+      m += +l * this.punti[l].length;
+    }
+
+    return m / this.statistiche.totali;
+  }
+
+
+
   constructor(
     private emojiService: EmojiService,
     private modalService: NgbModal
@@ -78,6 +90,7 @@ export class EmojiStatisticheComponent implements OnInit {
     this.punteggiomedio /= this.statistiche.ottenute;
     this.creaLivelli();
     this.creaCount();
+    this.creaPunti();
 
   }
 
@@ -99,6 +112,17 @@ export class EmojiStatisticheComponent implements OnInit {
         this.count[e.count].push(e);
       } else {
         this.count[e.count] = [e];
+      }
+    }
+  }
+
+  creaPunti(): void {
+    for (const e of this.emoji) {
+      const p = e.punteggio - e.punteggio % 100;
+      if (this.punti[p]) {
+        this.punti[p].push(e);
+      } else {
+        this.punti[p] = [e];
       }
     }
   }

@@ -93,5 +93,36 @@
 
 		</tbody>
 	</table>
+	<table class="tabella punti">
+		<tbody>
+			<tr>
+				<th class="scritta2">Punti superiori a</th>
+				<th class="scritta2">
+					Emoji
+					<fa-icon
+						[icon]="tabellacompleta ? mostra : nascondi"
+						(click)="tabellacompleta = !tabellacompleta"></fa-icon>
+				</th>
+			</tr>
+			<tr
+				*ngFor="let p of Object.keys(punti)"
+				class="scritta">
+				<td>{{p}}</td>
+				<td *ngIf="!tabellacompleta">{{punti[p].length}}</td>
+				<td *ngIf="tabellacompleta">
+					<img
+						*ngFor="let e of punti[p]"
+						[src]="e.immagine"
+						(click)="selectEmoji(e)"
+						[ngbTooltip]="e?.nome">
+				</td>
+			</tr>
+			<tr class="scritta">
+				<td>Media</td>
+				<td>{{mediapunti | number:"1.2-2"}}</td>
+			</tr>
+
+		</tbody>
+	</table>
 
 </div>
