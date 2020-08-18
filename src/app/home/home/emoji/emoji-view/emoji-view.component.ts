@@ -4,6 +4,8 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditEmojiComponent } from '../edit-emoji/edit-emoji.component';
 import { EmojiService } from '../../../../../service/emoji.service';
 import { ICONS } from '../../../../icons/icons';
+import { GruppoService } from '../../../../../service/gruppo.service';
+import { Gruppo } from '../../../../../model/gruppo.model';
 
 @Component({
   selector: 'app-emoji-view',
@@ -15,13 +17,19 @@ export class EmojiViewComponent implements OnInit {
   @Input()
   emoji: Emoji;
 
+  gruppi: Gruppo[] = [];
+
   smile = ICONS.smile;
   diamond = ICONS.diamond;
   lock = ICONS.lock;
 
-  constructor(private modalService: NgbModal, private activeModal: NgbActiveModal) { }
+  constructor(private modalService: NgbModal, private gruppoService: GruppoService) { }
 
   ngOnInit() {
+    for (const g of this.emoji.gruppi) {
+      const gruppo = this.gruppoService.prendi(g);
+      this.gruppi.push(gruppo);
+    }
   }
 
   modifica(): void {

@@ -25,37 +25,53 @@
 		<div class="container">
 			<div class="content1">
 				<div class="content1-1 {{emoji.categoria}}">
-					<div
-						class="premio"
-						*ngIf="emoji.premiogruppo">
-						<fa-icon
-							[icon]="smile"
-							class="white"
-							size="3x"></fa-icon>
 
+					<div class="img-container">
+						<img [src]="emoji.immagine">
 					</div>
-					<div
-						class="premio"
-						*ngIf="emoji .solodiamante">
+					<div class="premio-container">
+						<div
+							class="premio"
+							*ngIf="emoji.premiogruppo">
+							<fa-icon
+								[icon]="smile"
+								class="white"
+								size="3x"></fa-icon>
 
-						<fa-icon
-							[icon]="diamond"
-							size="3x"
-							class="white"></fa-icon>
+						</div>
+						<div
+							class="premio"
+							*ngIf="emoji.solodiamante">
+
+							<fa-icon
+								[icon]="diamond"
+								size="3x"
+								class="white"></fa-icon>
+						</div>
+
+						<div
+							class="premio serie"
+							*ngIf="emoji.serie">
+							<div>{{emoji.serie}}</div>
+
+						</div>
 					</div>
 
-					<div
-						class="premio serie"
-						*ngIf="emoji.serie">
-						<div>{{emoji.serie}}</div>
-
-					</div>
-					<img [src]="emoji.immagine">
 				</div>
 				<div
 					class="content1-2"
 					*ngIf="emoji.count">
-					<div>
+					<div class="actions">
+
+						<button
+							type="button"
+							class="btn primary"
+							(click)="modifica()">
+							Modifica
+						</button>
+					</div>
+
+					<div class="data">
 						<div class="punteggio {{emoji.categoria}} scritta">
 							<span
 								class="scritta"
@@ -73,27 +89,6 @@
 						</div>
 					</div>
 
-					<div class="actions">
-
-						<button
-							type="button"
-							class="btn primary"
-							(click)="modifica()">
-							Modifica
-						</button>
-					</div>
-
-				</div>
-				<div
-					class="actions"
-					*ngIf="!emoji.count">
-
-					<button
-						type="button"
-						class="btn primary"
-						(click)="modifica()">
-						Modifica
-					</button>
 				</div>
 
 			</div>
@@ -105,6 +100,34 @@
 					<div class="descrizione-container">
 						<div class="descrizione">
 							<span>{{emoji.descrizione}}</span>
+						</div>
+					</div>
+					<div
+						class="gruppi-container"
+						*ngIf="gruppi.length">
+						<div class="gruppi">
+							<ng-template [ngIf]="gruppi.length == 1">
+								<span>
+									Questa emoji fa parte del gruppo
+									<i>
+										<b>{{gruppi[0].nome}}</b>
+									</i>
+									.
+								</span>
+							</ng-template>
+							<ng-template [ngIf]="gruppi.length == 2">
+								<span>
+									Questa emoji fa parte dei gruppi
+									<i>
+										<b>{{gruppi[0].nome}}</b>
+									</i>
+									e
+									<i>
+										<b>{{gruppi[1].nome}}</b>
+									</i>
+									.
+								</span>
+							</ng-template>
 						</div>
 					</div>
 				</div>

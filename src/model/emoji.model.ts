@@ -1,4 +1,8 @@
 import { Base } from './base.model';
+import { StorageService, LOCAL_STORAGE } from 'ngx-webstorage-service';
+import { Inject } from '@angular/core';
+import { plainToClass } from 'class-transformer';
+import { Gruppo, EmojiGruppo } from './gruppo.model';
 export enum CategoriaEmoji {
   ARGENTO = 'argento',
   ORO = 'oro',
@@ -150,6 +154,22 @@ export class Emoji extends Base {
     return ['ordine', 'nome', 'LIVELLO', 'punteggio', 'count'];
   }
 
+  get gruppi(): number[] {
+    const g = JSON.parse(localStorage.getItem('emojigruppi'));
+    const res = [];
+    if (g) {
+      const gruppi: EmojiGruppo[] = g.map(r => plainToClass(EmojiGruppo, r));
+      for (const gruppo of gruppi) {
+        if (gruppo.emojiid === this.id) {
+          res.push(gruppo.gruppoid);
+        }
+      }
+
+      return res;
+    }
+
+
+  }
 }
 
 export class StatisticheEmoji {
