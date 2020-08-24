@@ -19,16 +19,30 @@ export class EmojiListComponent implements OnInit {
 
   @Input()
   emoji: Emoji[];
+
   emojiArgento: Emoji[];
   emojiArgentoF: Emoji[];
+
   emojiOro: Emoji[];
   emojiOroF: Emoji[];
+
   emojiStoria: Emoji[];
+  emojiStoriaF: Emoji[];
+
   emojiArcobaleno: Emoji[];
+  emojiArcobalenoF: Emoji[];
+
   emojiCattivo: Emoji[];
+  emojiCattivoF: Emoji[];
+
   emojiSerieI: Emoji[];
+  emojiSerieIF: Emoji[];
+
   emojiSerieII: Emoji[];
+  emojiSerieIIF: Emoji[];
+
   emojiSerieIII: Emoji[];
+  emojiSerieIIIF: Emoji[];
 
   @Output()
   selected = new EventEmitter();
@@ -224,11 +238,46 @@ export class EmojiListComponent implements OnInit {
         return e.nome?.toLowerCase().indexOf(val) >= 0;
       });
 
+      this.emojiArcobalenoF = this.emojiArcobaleno.filter(e => {
+        return e.nome?.toLowerCase().indexOf(val) >= 0;
+      });
+
+
+      this.emojiCattivoF = this.emojiCattivo.filter(e => {
+        return e.nome?.toLowerCase().indexOf(val) >= 0;
+      });
+
+      this.emojiStoriaF = this.emojiStoria.filter(e => {
+        return e.nome?.toLowerCase().indexOf(val) >= 0;
+      });
+
+      this.emojiSerieIF = this.emojiSerieI.filter(e => {
+        return e.nome?.toLowerCase().indexOf(val) >= 0;
+      });
+
+      this.emojiSerieIIF = this.emojiSerieII.filter(e => {
+        return e.nome?.toLowerCase().indexOf(val) >= 0;
+      });
+
+      this.emojiSerieIIIF = this.emojiSerieIII.filter(e => {
+        return e.nome?.toLowerCase().indexOf(val) >= 0;
+      });
 
     } else {
       this.emojiArgentoF = this.emojiArgento;
       this.emojiOroF = this.emojiOro;
+      this.emojiArcobalenoF = this.emojiArcobaleno;
+      this.emojiCattivoF = this.emojiCattivo;
+      this.emojiStoriaF = this.emojiStoria;
+      this.emojiSerieIF = this.emojiSerieI;
+      this.emojiSerieIIF = this.emojiSerieII;
+      this.emojiSerieIIIF = this.emojiSerieIII;
     }
+  }
+
+  selezionaScatola(nome: string): void {
+    this.scatola = nome;
+    this.updateFilter();
   }
 
 

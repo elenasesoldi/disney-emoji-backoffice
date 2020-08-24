@@ -6,7 +6,7 @@
 			alt="scatola {{s.nome}}"
 			ngbTooltip="{{s.nome}}"
 			tooltipClass="scritta"
-			(click)="scatola = s.nome"
+			(click)="selezionaScatola(s.nome)"
 			[class.selezionata]="scatola == s.nome">
 	</div>
 	<div class="button-container">
@@ -337,11 +337,19 @@
 					</select>
 				</div>
 			</div>
+			<div class="row">
+
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Filtra Emoji per nome"
+					(keyup)="updateFilter($event)">
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
 
-				<li *ngFor="let e of emojiSerieI">
+				<li *ngFor="let e of emojiSerieIF">
 					<div
 						class="img-border oro"
 						[class.selezionato]="e.id == selezionata?.id">
@@ -453,11 +461,19 @@
 					</select>
 				</div>
 			</div>
+			<div class="row">
+
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Filtra Emoji per nome"
+					(keyup)="updateFilter($event)">
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
 
-				<li *ngFor="let e of emojiSerieII">
+				<li *ngFor="let e of emojiSerieIIF">
 					<div
 						class="img-border oro"
 						[class.selezionato]="e.id == selezionata?.id">
@@ -569,11 +585,19 @@
 					</select>
 				</div>
 			</div>
+			<div class="row">
+
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Filtra Emoji per nome"
+					(keyup)="updateFilter($event)">
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
 
-				<li *ngFor="let e of emojiSerieIII">
+				<li *ngFor="let e of emojiSerieIIIF">
 					<div
 						class="img-border oro"
 						[class.selezionato]="e.id == selezionata?.id">
@@ -685,11 +709,19 @@
 					</select>
 				</div>
 			</div>
+			<div class="row">
+
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Filtra Emoji per nome"
+					(keyup)="updateFilter($event)">
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
 
-				<li *ngFor="let e of emojiStoria">
+				<li *ngFor="let e of emojiStoriaF">
 					<div
 						class="img-border storia"
 						[class.selezionato]="e.id == selezionata?.id">
@@ -801,12 +833,20 @@
 					</select>
 				</div>
 			</div>
+			<div class="row">
+
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Filtra Emoji per nome"
+					(keyup)="updateFilter($event)">
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper"
 				*ngIf="!ordinaemoji">
 
-				<li *ngFor="let e of emojiArcobaleno">
+				<li *ngFor="let e of emojiArcobalenoF">
 					<div
 						class="img-border arcobaleno"
 						[class.selezionato]="e.id == selezionata?.id">
@@ -931,11 +971,19 @@
 					</select>
 				</div>
 			</div>
+			<div class="row">
+
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Filtra Emoji per nome"
+					(keyup)="updateFilter($event)">
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper">
 
-				<li *ngFor="let e of emojiCattivo">
+				<li *ngFor="let e of emojiCattivoF">
 					<div
 						class="img-border cattivo"
 						[class.selezionato]="e.id == selezionata?.id">
