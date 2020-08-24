@@ -20,7 +20,9 @@ export class EmojiListComponent implements OnInit {
   @Input()
   emoji: Emoji[];
   emojiArgento: Emoji[];
+  emojiArgentoF: Emoji[];
   emojiOro: Emoji[];
+  emojiOroF: Emoji[];
   emojiStoria: Emoji[];
   emojiArcobaleno: Emoji[];
   emojiCattivo: Emoji[];
@@ -79,6 +81,8 @@ export class EmojiListComponent implements OnInit {
     this.statisticheStoria();
     this.statisticheArcobaleno();
     this.statisticheCattivo();
+
+    this.updateFilter();
 
 
   }
@@ -169,6 +173,9 @@ export class EmojiListComponent implements OnInit {
       case 'oro':
         listaEmoji = this.emojiOro;
         break;
+      case 'arcobaleno':
+        listaEmoji = this.emojiArcobaleno;
+        break;
     }
 
     const t = listaEmoji.length;
@@ -202,6 +209,26 @@ export class EmojiListComponent implements OnInit {
 
     this.emojiCattivo = this.emojiService.prendiEmojyByCat(CategoriaEmoji.CATTIVO, this.campo, this.ordine);
 
+  }
+
+  updateFilter(event?: any): void {
+    const val = event ? event.target.value.toLowerCase() : undefined;
+
+    if (val) {
+
+      this.emojiArgentoF = this.emojiArgento.filter(e => {
+        return e.nome?.toLowerCase().indexOf(val) >= 0;
+      });
+
+      this.emojiOroF = this.emojiOro.filter(e => {
+        return e.nome?.toLowerCase().indexOf(val) >= 0;
+      });
+
+
+    } else {
+      this.emojiArgentoF = this.emojiArgento;
+      this.emojiOroF = this.emojiOro;
+    }
   }
 
 

@@ -22,6 +22,7 @@
 		class="list-container"
 		*ngIf="emoji.length">
 		<!-- EMOJI ARGENTO -->
+
 		<ng-template [ngIf]="scatola == 'argento'">
 			<h1
 				class="scritta argento"
@@ -66,12 +67,20 @@
 					</select>
 				</div>
 			</div>
+			<div class="row">
+
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Filtra Emoji per nome"
+					(keyup)="updateFilter($event)">
+			</div>
 			<ul
 				[style.column-count]="12"
 				class="scrollingwrapper"
 				*ngIf="!ordinaemoji">
 
-				<li *ngFor="let e of emojiArgento">
+				<li *ngFor="let e of emojiArgentoF">
 					<div
 						class="img-border argento"
 						[class.selezionato]="e.id == selezionata?.id">
@@ -132,6 +141,7 @@
 				class="ordina"
 				cdkDropList
 				(cdkDropListDropped)="drop($event, emojiArgento)">
+
 				<li
 					*ngFor="let e of emojiArgento"
 					cdkDrag>
@@ -188,12 +198,20 @@
 					</select>
 				</div>
 			</div>
+			<div class="row">
+
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Filtra Emoji per nome"
+					(keyup)="updateFilter($event)">
+			</div>
 			<ul
 				*ngIf="!ordinaemoji"
 				[style.column-count]="12"
 				class="scrollingwrapper">
 
-				<li *ngFor="let e of emojiOro">
+				<li *ngFor="let e of emojiOroF">
 					<div
 						class="img-border oro"
 						[class.selezionato]="e.id == selezionata?.id">
@@ -785,7 +803,8 @@
 			</div>
 			<ul
 				[style.column-count]="12"
-				class="scrollingwrapper">
+				class="scrollingwrapper"
+				*ngIf="!ordinaemoji">
 
 				<li *ngFor="let e of emojiArcobaleno">
 					<div
@@ -851,6 +870,19 @@
 
 				</li>
 
+			</ul>
+			<ul
+				*ngIf="ordinaemoji"
+				class="ordina"
+				cdkDropList
+				(cdkDropListDropped)="drop($event, emojiArcobaleno)">
+				<li
+					*ngFor="let e of emojiArcobaleno"
+					cdkDrag>
+					<span>{{e.ordine}}.</span>
+					<img [src]="e.immagine">
+					<span>{{e.nome}}</span>
+				</li>
 			</ul>
 		</ng-template>
 
@@ -981,7 +1013,7 @@
 		<button
 			type="button"
 			class="btn secondary"
-			*ngIf="(scatola == 'argento' || scatola == 'oro' ) && !ordinaemoji"
+			*ngIf="(scatola == 'argento' || scatola == 'oro' || scatola == 'arcobaleno') && !ordinaemoji"
 			(click)="ordinaEmoji()">
 			Ordina Emoji
 		</button>

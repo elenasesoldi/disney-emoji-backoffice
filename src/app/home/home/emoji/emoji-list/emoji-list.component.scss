@@ -298,3 +298,15 @@ ul {
     height: 30px;
   }
 }
+
+.row {
+  input {
+    border-radius: 30px;
+    height: 30px;
+    margin-left: 15px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

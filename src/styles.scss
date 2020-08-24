@@ -93,6 +93,9 @@ html {
   &:focus {
     outline: none !important;
   }
+  &:hover {
+    cursor: pointer;
+  }
 
   &.primary {
     background: linear-gradient($primary, $primarylight);
