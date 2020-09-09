@@ -980,6 +980,7 @@
 					(keyup)="updateFilter($event)">
 			</div>
 			<ul
+				*ngIf="!ordinaemoji"
 				[style.column-count]="12"
 				class="scrollingwrapper">
 
@@ -1048,6 +1049,19 @@
 				</li>
 
 			</ul>
+			<ul
+				*ngIf="ordinaemoji"
+				class="ordina"
+				cdkDropList
+				(cdkDropListDropped)="drop($event, emojiCattivo)">
+				<li
+					*ngFor="let e of emojiCattivo"
+					cdkDrag>
+					<span>{{e.ordine}}.</span>
+					<img [src]="e.immagine">
+					<span>{{e.nome}}</span>
+				</li>
+			</ul>
 		</ng-template>
 	</div>
 
@@ -1061,7 +1075,7 @@
 		<button
 			type="button"
 			class="btn secondary"
-			*ngIf="(scatola == 'argento' || scatola == 'oro' || scatola == 'arcobaleno') && !ordinaemoji"
+			*ngIf="(scatola == 'argento' || scatola == 'oro' || scatola == 'arcobaleno' || scatola === 'cattivo') && !ordinaemoji"
 			(click)="ordinaEmoji()">
 			Ordina Emoji
 		</button>

@@ -54,6 +54,12 @@ export class EmojiService {
     return this.emojiSubject.value.find(e => e.id === id);
   }
 
+  elimina(id: number): void {
+    const es = this.emojiSubject.value.filter(e => e.id !== id);
+    this.emojiSubject.next(es);
+    this.memorizzaEmoji();
+  }
+
   prendiEmojyByCat(categoria: CategoriaEmoji, campo?: string, ordine?: Ordine): Emoji[] {
     const field = campo ? campo : 'ordine'; // default ordine
     const sort = ordine ? ordine === Ordine.CRESCENTE : true; // default crescente

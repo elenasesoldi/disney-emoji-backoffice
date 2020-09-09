@@ -190,6 +190,8 @@ export class EmojiListComponent implements OnInit {
       case 'arcobaleno':
         listaEmoji = this.emojiArcobaleno;
         break;
+      case 'cattivo':
+        listaEmoji = this.emojiCattivo;
     }
 
     const t = listaEmoji.length;

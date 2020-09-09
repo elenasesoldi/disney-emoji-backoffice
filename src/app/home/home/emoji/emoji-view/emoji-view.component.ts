@@ -23,7 +23,10 @@ export class EmojiViewComponent implements OnInit {
   diamond = ICONS.diamond;
   lock = ICONS.lock;
 
-  constructor(private modalService: NgbModal, private gruppoService: GruppoService) { }
+  constructor(
+    private emojiService: EmojiService,
+    private gruppoService: GruppoService,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     for (const g of this.emoji.gruppi) {
@@ -39,6 +42,8 @@ export class EmojiViewComponent implements OnInit {
   }
 
   elimina(): void {
+    this.emojiService.elimina(this.emoji.id);
+    this.modalService.dismissAll();
   }
 
   annulla(): void {
